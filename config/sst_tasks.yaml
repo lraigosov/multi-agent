@@ -1,0 +1,458 @@
+# Tareas especializadas para el dominio SST (Seguridad y Salud en el Trabajo)
+# Definición de tareas específicas con descripciones detalladas y outputs esperados
+
+# ============================================================================
+# TAREAS DE EVALUACIÓN DE RIESGOS
+# ============================================================================
+
+conduct_risk_assessment:
+  description: |
+    Realizar una evaluación exhaustiva de riesgos laborales en el sitio de trabajo especificado.
+    Debes identificar todos los peligros potenciales, evaluar la probabilidad y severidad de 
+    cada riesgo, y calcular el nivel de riesgo utilizando una matriz de riesgo estándar.
+    
+    Considera los siguientes aspectos:
+    - Peligros físicos (caídas, golpes, atrapamientos)
+    - Peligros químicos (exposición a sustancias tóxicas)
+    - Peligros biológicos (exposición a microorganismos)
+    - Peligros ergonómicos (posturas forzadas, movimientos repetitivos)
+    - Peligros psicosociales (estrés, acoso, sobrecarga)
+    
+    Para cada riesgo identificado, proporciona:
+    - Descripción del peligro
+    - Probabilidad de ocurrencia (Muy Baja/Baja/Media/Alta/Muy Alta)
+    - Severidad de consecuencias (Insignificante/Menor/Moderada/Mayor/Catastrófica)
+    - Nivel de riesgo resultante
+    - Controles existentes
+    - Controles adicionales recomendados
+  expected_output: |
+    Reporte de evaluación de riesgos que incluya:
+    1. Resumen ejecutivo con principales hallazgos
+    2. Matriz de riesgos completa con todos los peligros identificados
+    3. Lista priorizada de riesgos (Crítico/Alto/Medio/Bajo)
+    4. Plan de acción con medidas de control recomendadas
+    5. Cronograma de implementación sugerido
+    6. Recursos necesarios para implementar controles
+    
+    Formato: Documento estructurado con tablas, gráficos de matriz de riesgo y 
+    recomendaciones específicas y accionables.
+  agent: risk_analyst
+
+analyze_workplace_hazards:
+  description: |
+    Realizar un análisis detallado de los peligros presentes en el lugar de trabajo,
+    clasificándolos por categoría y evaluando su potencial impacto en la salud y 
+    seguridad de los trabajadores.
+    
+    Enfócate en:
+    - Inspección física del área de trabajo
+    - Revisión de procesos y procedimientos
+    - Análisis de equipos y herramientas
+    - Evaluación de condiciones ambientales
+    - Identificación de comportamientos de riesgo
+    
+    Utiliza herramientas de análisis como:
+    - Listas de verificación específicas por industria
+    - Análisis de Trabajo Seguro (JSA)
+    - Análisis de Modos de Falla y Efectos (FMEA)
+    - Observaciones de comportamiento
+  expected_output: |
+    Informe detallado de análisis de peligros con:
+    1. Inventario completo de peligros por categoría
+    2. Mapeo de peligros por área/proceso
+    3. Análisis de exposición por puesto de trabajo
+    4. Identificación de peligros críticos inmediatos
+    5. Recomendaciones de controles por jerarquía (eliminación, sustitución, ingeniería, administrativos, EPP)
+    6. Propuesta de monitoreo continuo
+    
+    Incluir fotografías, diagramas y esquemas cuando sea relevante.
+  agent: safety_inspector
+
+# ============================================================================
+# TAREAS DE CUMPLIMIENTO NORMATIVO
+# ============================================================================
+
+evaluate_regulatory_compliance:
+  description: |
+    Evaluar el nivel de cumplimiento de la organización con todas las regulaciones 
+    de seguridad y salud ocupacional aplicables a su industria y ubicación geográfica.
+    
+    Realizar una auditoría completa que incluya:
+    - Revisión de documentación del sistema de gestión SST
+    - Verificación de registros y controles requeridos
+    - Evaluación de programas de capacitación
+    - Revisión de procedimientos de emergencia
+    - Verificación de certificaciones y permisos
+    - Análisis de indicadores de desempeño SST
+    
+    Considerar regulaciones como:
+    - ISO 45001 (Sistema de Gestión SST)
+    - OSHA standards relevantes
+    - Regulaciones locales de SST
+    - Códigos de construcción y seguridad
+    - Estándares específicos de industria
+  expected_output: |
+    Reporte de cumplimiento normativo que contenga:
+    1. Estado actual de cumplimiento por regulación (% cumplimiento)
+    2. Brechas identificadas con nivel de criticidad
+    3. Requisitos faltantes o deficientes
+    4. Plan de acción para cerrar brechas
+    5. Cronograma de implementación
+    6. Estimación de costos de cumplimiento
+    7. Riesgos legales y de negocio por incumplimiento
+    
+    Incluir matriz de cumplimiento detallada y recomendaciones priorizadas.
+  agent: compliance_officer
+
+research_applicable_regulations:
+  description: |
+    Investigar y compilar todas las regulaciones, normas y estándares de seguridad 
+    y salud ocupacional aplicables al contexto específico de la organización.
+    
+    La investigación debe abarcar:
+    - Regulaciones federales/nacionales de SST
+    - Códigos y ordenanzas locales/municipales
+    - Estándares de industria relevantes
+    - Normas internacionales aplicables
+    - Mejores prácticas reconocidas
+    - Cambios regulatorios recientes o próximos
+    
+    Para cada regulación identificada, proporcionar:
+    - Título completo y número de regulación
+    - Autoridad emisora
+    - Fecha de vigencia
+    - Alcance y aplicabilidad
+    - Requisitos clave
+    - Penalidades por incumplimiento
+    - Recursos para implementación
+  expected_output: |
+    Compendio regulatorio que incluya:
+    1. Registro maestro de regulaciones aplicables
+    2. Resumen de requisitos clave por regulación
+    3. Matriz de aplicabilidad por área/proceso
+    4. Calendario de fechas importantes (renovaciones, auditorías)
+    5. Directorio de autoridades regulatorias
+    6. Recursos de capacitación y guías de implementación
+    7. Sistema de seguimiento de cambios regulatorios
+    
+    Documento estructurado como referencia rápida y herramienta de trabajo.
+  agent: regulatory_specialist
+
+# ============================================================================
+# TAREAS DE INVESTIGACIÓN DE INCIDENTES
+# ============================================================================
+
+investigate_workplace_incident:
+  description: |
+    Conducir una investigación exhaustiva de un incidente laboral ocurrido, aplicando
+    metodologías reconocidas de análisis de causa raíz para prevenir recurrencias.
+    
+    El proceso de investigación debe incluir:
+    - Preservación y documentación de la escena
+    - Recopilación de evidencia física y documental
+    - Entrevistas con testigos, víctimas y supervisores
+    - Análisis de procedimientos y capacitación
+    - Revisión de registros de mantenimiento y inspección
+    - Evaluación de factores humanos y organizacionales
+    
+    Aplicar métodos como:
+    - Análisis de Causa Raíz (RCA)
+    - Técnica de los 5 Por Qués
+    - Diagrama de Espina de Pescado (Ishikawa)
+    - Análisis de Árbol de Fallas (FTA)
+    - Análisis de Factores Humanos
+  expected_output: |
+    Reporte completo de investigación de incidente con:
+    1. Resumen ejecutivo del incidente
+    2. Descripción detallada de los hechos
+    3. Cronología precisa de eventos
+    4. Análisis de causas inmediatas y raíz
+    5. Factores contribuyentes identificados
+    6. Acciones correctivas y preventivas específicas
+    7. Responsables y fechas de implementación
+    8. Medidas para prevenir recurrencias similares
+    9. Lecciones aprendidas para comunicar
+    
+    Incluir diagramas, fotografías, mapas de proceso y evidencia relevante.
+  agent: incident_investigator
+
+analyze_incident_patterns:
+  description: |
+    Analizar patrones y tendencias en los incidentes laborales ocurridos en la 
+    organización para identificar causas sistémicas y oportunidades de mejora.
+    
+    El análisis debe incluir:
+    - Revisión de base de datos histórica de incidentes
+    - Categorización por tipo, severidad, área, turno
+    - Análisis estadístico de frecuencias y tendencias
+    - Identificación de factores comunes
+    - Evaluación de efectividad de medidas correctivas previas
+    - Benchmarking con indicadores de industria
+    
+    Considerar variables como:
+    - Tipo de incidente (lesión, enfermedad, cuasi-accidente)
+    - Parte del cuerpo afectada
+    - Fuente de lesión/exposición
+    - Actividad al momento del incidente
+    - Experiencia del trabajador
+    - Hora, día, estación del año
+    - Condiciones ambientales
+  expected_output: |
+    Análisis de patrones de incidentes que contenga:
+    1. Dashboard estadístico con métricas clave
+    2. Análisis de tendencias temporales
+    3. Identificación de puntos calientes (hotspots)
+    4. Factores de riesgo predominantes
+    5. Correlaciones significativas encontradas
+    6. Comparación con benchmarks de industria
+    7. Recomendaciones para prevención proactiva
+    8. Propuesta de indicadores predictivos
+    
+    Presentar con gráficos, tablas estadísticas y visualizaciones claras.
+  agent: forensic_analyst
+
+# ============================================================================
+# TAREAS DE CAPACITACIÓN Y PREVENCIÓN
+# ============================================================================
+
+develop_safety_training_program:
+  description: |
+    Desarrollar un programa integral de capacitación en seguridad y salud ocupacional
+    adaptado a las necesidades específicas de la organización y los riesgos identificados.
+    
+    El programa debe incluir:
+    - Análisis de necesidades de capacitación por puesto
+    - Objetivos de aprendizaje específicos y medibles
+    - Contenido técnico actualizado y relevante
+    - Metodologías de enseñanza variadas e interactivas
+    - Materiales didácticos multimediales
+    - Evaluaciones de conocimiento y competencia
+    - Sistema de seguimiento y actualización
+    
+    Considerar diferentes audiencias:
+    - Trabajadores nuevos (inducción)
+    - Trabajadores experimentados (actualización)
+    - Supervisores y líderes de equipo
+    - Contratistas y visitantes
+    - Equipos de respuesta a emergencias
+    
+    Incluir temas como:
+    - Reconocimiento de peligros
+    - Uso correcto de EPP
+    - Procedimientos de trabajo seguro
+    - Respuesta a emergencias
+    - Derechos y responsabilidades
+  expected_output: |
+    Programa de capacitación completo que incluya:
+    1. Matriz de capacitación por puesto/riesgo
+    2. Currículum detallado de cada módulo
+    3. Materiales didácticos (presentaciones, videos, manuales)
+    4. Guías del instructor
+    5. Evaluaciones y certificaciones
+    6. Cronograma de implementación
+    7. Recursos necesarios (tiempo, presupuesto, espacios)
+    8. Métricas de efectividad del programa
+    9. Sistema de actualización continua
+    
+    Programa listo para implementar con todos los recursos necesarios.
+  agent: safety_trainer
+
+design_prevention_strategy:
+  description: |
+    Diseñar una estrategia integral de prevención de accidentes y enfermedades
+    ocupacionales basada en análisis de riesgos y mejores prácticas de la industria.
+    
+    La estrategia debe abordar:
+    - Eliminación y reducción de riesgos en la fuente
+    - Controles de ingeniería y administrativos
+    - Programas de comportamiento seguro
+    - Sistemas de recompensas e incentivos
+    - Comunicación efectiva de seguridad
+    - Participación activa de trabajadores
+    - Liderazgo visible en seguridad
+    - Cultura de seguridad organizacional
+    
+    Incluir componentes como:
+    - Inspecciones planificadas y auditorías
+    - Mantenimiento preventivo de seguridad
+    - Investigación proactiva de cuasi-accidentes
+    - Análisis de trabajos críticos
+    - Sistemas de sugerencias de seguridad
+    - Comités de seguridad activos
+    - Indicadores proactivos y reactivos
+  expected_output: |
+    Estrategia de prevención integral con:
+    1. Visión y objetivos estratégicos de prevención
+    2. Análisis de situación actual (baseline)
+    3. Programas específicos de prevención
+    4. Plan de implementación por fases
+    5. Estructura organizacional de seguridad
+    6. Presupuesto y recursos requeridos
+    7. Indicadores de desempeño (KPIs)
+    8. Sistema de seguimiento y mejora continua
+    9. Plan de comunicación y cambio organizacional
+    
+    Estrategia ejecutable con roadmap claro y métricas de éxito.
+  agent: prevention_specialist
+
+# ============================================================================
+# TAREAS DE EVALUACIÓN ESPECIALIZADA
+# ============================================================================
+
+conduct_ergonomic_assessment:
+  description: |
+    Realizar una evaluación ergonómica completa de los puestos de trabajo para
+    identificar factores de riesgo de trastornos musculoesqueléticos y proponer
+    mejoras en el diseño del trabajo.
+    
+    La evaluación debe incluir:
+    - Análisis postural detallado
+    - Evaluación de movimientos repetitivos
+    - Medición de fuerzas aplicadas
+    - Análisis de la carga de trabajo física
+    - Evaluación del entorno físico (iluminación, ruido, temperatura)
+    - Revisión de herramientas y equipos utilizados
+    - Análisis de la organización del trabajo
+    
+    Utilizar herramientas como:
+    - RULA (Rapid Upper Limb Assessment)
+    - REBA (Rapid Entire Body Assessment)
+    - NIOSH Lifting Equation
+    - JSI (Job Strain Index)
+    - Checklist OCRA
+    - Mediciones antropométricas
+  expected_output: |
+    Reporte de evaluación ergonómica que contenga:
+    1. Descripción detallada de puestos evaluados
+    2. Identificación de factores de riesgo ergonómico
+    3. Puntuaciones de herramientas de evaluación aplicadas
+    4. Nivel de riesgo por puesto de trabajo
+    5. Recomendaciones específicas de mejora
+    6. Propuestas de rediseño de puestos
+    7. Especificaciones de equipos ergonómicos
+    8. Plan de implementación de mejoras
+    9. Programa de seguimiento y monitoreo
+    
+    Incluir fotografías, mediciones, diagramas y especificaciones técnicas.
+  agent: ergonomist
+
+evaluate_occupational_exposures:
+  description: |
+    Evaluar las exposiciones ocupacionales a agentes químicos, físicos y biológicos
+    presentes en el ambiente laboral, comparándolas con límites de exposición
+    ocupacional establecidos.
+    
+    La evaluación debe abarcar:
+    - Identificación de agentes de exposición
+    - Caracterización de fuentes de exposición
+    - Evaluación de rutas de exposición (inhalación, dérmica, ingestión)
+    - Monitoreo ambiental y personal
+    - Análisis de patrones de exposición
+    - Evaluación de grupos expuestos
+    - Revisión de controles existentes
+    - Comparación con límites regulatorios
+    
+    Considerar agentes como:
+    - Sustancias químicas (vapores, gases, polvos)
+    - Agentes físicos (ruido, vibraciones, radiaciones)
+    - Agentes biológicos (microorganismos, alérgenos)
+    - Factores ambientales (temperatura, humedad)
+  expected_output: |
+    Informe de evaluación de exposiciones que incluya:
+    1. Inventario de agentes de exposición por área
+    2. Resultados de monitoreo ambiental y personal
+    3. Comparación con límites de exposición ocupacional
+    4. Identificación de exposiciones excesivas
+    5. Evaluación de riesgo para la salud
+    6. Recomendaciones de controles de exposición
+    7. Programa de monitoreo continuo
+    8. Especificaciones de equipos de protección
+    9. Requerimientos de vigilancia médica
+    
+    Datos respaldados con mediciones certificadas y análisis estadístico.
+  agent: industrial_hygienist
+
+# ============================================================================
+# TAREAS DE GESTIÓN ESTRATÉGICA
+# ============================================================================
+
+develop_sst_management_system:
+  description: |
+    Desarrollar e implementar un sistema integral de gestión de seguridad y salud 
+    en el trabajo basado en estándares reconocidos como ISO 45001 y mejores prácticas
+    de la industria.
+    
+    El sistema debe incluir todos los elementos clave:
+    - Política y objetivos de SST
+    - Planificación basada en riesgos
+    - Roles, responsabilidades y autoridades
+    - Competencia y sensibilización
+    - Comunicación y consulta
+    - Control operacional
+    - Preparación y respuesta ante emergencias
+    - Seguimiento y medición del desempeño
+    - Auditoría interna
+    - Revisión por la dirección
+    - Mejora continua
+    
+    Asegurar integración con:
+    - Sistemas de gestión de calidad
+    - Sistemas de gestión ambiental
+    - Procesos de negocio principales
+    - Cultura organizacional existente
+  expected_output: |
+    Sistema de gestión SST completo que contenga:
+    1. Manual del sistema de gestión SST
+    2. Procedimientos documentados por proceso
+    3. Formularios y registros requeridos
+    4. Matriz de responsabilidades
+    5. Plan de implementación por fases
+    6. Programa de auditorías internas
+    7. Indicadores de desempeño del sistema
+    8. Plan de capacitación en el sistema
+    9. Cronograma de revisiones y actualizaciones
+    
+    Sistema listo para certificación externa si se requiere.
+  agent: sst_manager
+
+create_emergency_response_plan:
+  description: |
+    Crear un plan integral de respuesta a emergencias que cubra todos los escenarios
+    de emergencia posibles en la organización y establezca procedimientos claros
+    para proteger vidas y minimizar daños.
+    
+    El plan debe abordar emergencias como:
+    - Incendios y explosiones
+    - Derrames de materiales peligrosos
+    - Emergencias médicas
+    - Evacuaciones masivas
+    - Desastres naturales
+    - Amenazas de seguridad
+    - Fallas de servicios críticos
+    - Accidentes graves
+    
+    Incluir elementos como:
+    - Estructura de comando de emergencias
+    - Procedimientos de notificación y alarma
+    - Rutas de evacuación y puntos de encuentro
+    - Roles y responsabilidades específicas
+    - Comunicación con servicios de emergencia
+    - Atención médica de emergencia
+    - Protección de instalaciones críticas
+    - Comunicación con familias y medios
+    - Planes de continuidad del negocio
+  expected_output: |
+    Plan de respuesta a emergencias completo con:
+    1. Manual de procedimientos de emergencia
+    2. Organigramas de comando de emergencias
+    3. Mapas de evacuación actualizados
+    4. Listas de contactos de emergencia
+    5. Inventario de equipos de emergencia
+    6. Procedimientos por tipo de emergencia
+    7. Programa de entrenamiento y simulacros
+    8. Sistema de comunicación de emergencias
+    9. Formularios de reporte post-emergencia
+    10. Plan de actualización y mantenimiento
+    
+    Plan operativo listo para implementar y probar.
+  agent: emergency_coordinator

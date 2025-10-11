@@ -1,0 +1,413 @@
+# Configuración específica para herramientas del dominio Marketing
+# Define configuraciones y parámetros para herramientas especializadas de marketing digital
+
+# ============================================================================
+# CONFIGURACIÓN DE HERRAMIENTAS DE INVESTIGACIÓN DE MERCADO
+# ============================================================================
+
+market_research_tools:
+  trend_analysis:
+    time_periods:
+      short_term: { months: 3, description: "Tendencias recientes y emergentes" }
+      medium_term: { months: 6, description: "Tendencias establecidas y en desarrollo" }
+      long_term: { months: 12, description: "Tendencias consolidadas y proyecciones" }
+    
+    data_sources:
+      - google_trends
+      - social_media_analytics
+      - industry_reports
+      - search_volume_data
+      - news_sentiment_analysis
+    
+    industries:
+      technology: ["AI", "blockchain", "IoT", "cybersecurity", "cloud computing"]
+      fintech: ["digital payments", "cryptocurrency", "robo-advisors", "insurtech", "regtech"]
+      healthcare: ["telemedicine", "digital health", "AI diagnostics", "wearables", "personalized medicine"]
+      ecommerce: ["social commerce", "mobile shopping", "AR/VR shopping", "sustainability", "omnichannel"]
+      b2b_saas: ["automation", "remote work tools", "data analytics", "customer experience", "integration platforms"]
+
+  audience_insights:
+    demographics:
+      age_groups:
+        - gen_z: { range: "18-25", characteristics: ["digital natives", "social conscious", "mobile first"] }
+        - millennials: { range: "26-40", characteristics: ["tech savvy", "experience focused", "brand loyal"] }
+        - gen_x: { range: "41-55", characteristics: ["pragmatic", "value oriented", "research driven"] }
+        - boomers: { range: "56+", characteristics: ["traditional", "quality focused", "relationship oriented"] }
+    
+    psychographics:
+      lifestyle_segments:
+        - innovators: "Early adopters, high income, risk tolerant"
+        - achievers: "Success oriented, work focused, brand conscious"
+        - experiencers: "Young, impulsive, variety seeking"
+        - believers: "Conservative, traditional, loyal"
+        - strivers: "Trendy, fun loving, resource constrained"
+    
+    behavioral_patterns:
+      - purchase_frequency
+      - brand_switching_tendency
+      - price_sensitivity
+      - channel_preferences
+      - content_consumption_habits
+
+# ============================================================================
+# CONFIGURACIÓN DE ANÁLISIS COMPETITIVO
+# ============================================================================
+
+competitive_analysis:
+  analysis_frameworks:
+    porters_five_forces:
+      - threat_of_new_entrants
+      - bargaining_power_of_suppliers
+      - bargaining_power_of_buyers
+      - threat_of_substitute_products
+      - competitive_rivalry
+    
+    competitor_categories:
+      direct: "Same product, same market, same customer"
+      indirect: "Different product, same need, same customer"
+      substitute: "Different product, different approach, same outcome"
+      potential: "Not competing yet, but could enter market"
+    
+    competitive_intelligence:
+      data_sources:
+        - company_websites
+        - financial_reports
+        - press_releases
+        - job_postings
+        - patent_filings
+        - social_media_presence
+        - customer_reviews
+        - industry_publications
+      
+      analysis_dimensions:
+        - market_share
+        - pricing_strategy
+        - product_features
+        - marketing_messaging
+        - distribution_channels
+        - customer_satisfaction
+        - financial_performance
+        - strategic_partnerships
+
+  benchmarking_metrics:
+    marketing_metrics:
+      - brand_awareness
+      - share_of_voice
+      - engagement_rates
+      - content_performance
+      - seo_rankings
+      - paid_search_presence
+    
+    business_metrics:
+      - revenue_growth
+      - market_share
+      - customer_acquisition_cost
+      - customer_lifetime_value
+      - retention_rates
+      - pricing_positioning
+
+# ============================================================================
+# CONFIGURACIÓN DE ESTRATEGIA DE CONTENIDO
+# ============================================================================
+
+content_strategy:
+  content_types:
+    blog_posts:
+      - how_to_guides
+      - industry_insights
+      - case_studies
+      - thought_leadership
+      - product_updates
+      - customer_stories
+    
+    multimedia:
+      - infographics
+      - videos
+      - podcasts
+      - webinars
+      - interactive_tools
+      - virtual_events
+    
+    social_media:
+      - educational_posts
+      - behind_the_scenes
+      - user_generated_content
+      - trending_topics
+      - community_discussions
+      - live_streams
+
+  content_pillars:
+    education: { percentage: 40, description: "Educational and helpful content" }
+    entertainment: { percentage: 30, description: "Engaging and entertaining content" }
+    promotion: { percentage: 20, description: "Product and service promotion" }
+    inspiration: { percentage: 10, description: "Motivational and aspirational content" }
+
+  seo_optimization:
+    keyword_research:
+      tools:
+        - google_keyword_planner
+        - semrush
+        - ahrefs
+        - ubersuggest
+        - answer_the_public
+      
+      keyword_types:
+        - primary_keywords
+        - long_tail_keywords
+        - semantic_keywords
+        - local_keywords
+        - branded_keywords
+    
+    content_optimization:
+      on_page_factors:
+        - title_tags
+        - meta_descriptions
+        - header_structure
+        - internal_linking
+        - image_optimization
+        - schema_markup
+      
+      content_quality:
+        - readability_score
+        - content_depth
+        - topic_authority
+        - user_intent_matching
+        - freshness_updates
+
+# ============================================================================
+# CONFIGURACIÓN DE MARKETING DIGITAL
+# ============================================================================
+
+digital_marketing:
+  channel_configuration:
+    social_media:
+      platforms:
+        linkedin:
+          audience: "B2B professionals, decision makers"
+          content_types: ["thought leadership", "company updates", "industry insights"]
+          posting_frequency: "3-5 times per week"
+        
+        twitter:
+          audience: "Tech-savvy users, news followers, influencers"
+          content_types: ["news", "quick tips", "industry commentary"]
+          posting_frequency: "1-3 times per day"
+        
+        facebook:
+          audience: "Broad consumer audience, community focused"
+          content_types: ["community content", "events", "customer stories"]
+          posting_frequency: "1-2 times per day"
+        
+        instagram:
+          audience: "Visual-oriented users, younger demographics"
+          content_types: ["visual content", "stories", "behind-the-scenes"]
+          posting_frequency: "1 time per day"
+    
+    email_marketing:
+      campaign_types:
+        welcome_series: "Onboard new subscribers"
+        newsletter: "Regular updates and content"
+        promotional: "Product launches and offers"
+        educational: "How-to guides and tips"
+        re_engagement: "Win back inactive subscribers"
+      
+      segmentation_criteria:
+        - demographic_data
+        - behavioral_data
+        - purchase_history
+        - engagement_level
+        - lifecycle_stage
+    
+    paid_advertising:
+      platforms:
+        google_ads:
+          campaign_types: ["search", "display", "shopping", "video", "app"]
+          targeting_options: ["keywords", "demographics", "interests", "remarketing"]
+        
+        facebook_ads:
+          campaign_types: ["awareness", "traffic", "engagement", "leads", "conversions"]
+          targeting_options: ["demographics", "interests", "behaviors", "custom_audiences"]
+        
+        linkedin_ads:
+          campaign_types: ["sponsored_content", "message_ads", "dynamic_ads", "text_ads"]
+          targeting_options: ["job_title", "company", "industry", "skills"]
+
+# ============================================================================
+# CONFIGURACIÓN DE ANALÍTICAS Y MÉTRICAS
+# ============================================================================
+
+analytics_configuration:
+  kpi_categories:
+    awareness_metrics:
+      - brand_awareness
+      - reach
+      - impressions
+      - share_of_voice
+      - brand_mentions
+      - social_media_followers
+    
+    engagement_metrics:
+      - website_traffic
+      - time_on_site
+      - bounce_rate
+      - page_views
+      - social_engagement_rate
+      - email_open_rate
+      - click_through_rate
+    
+    conversion_metrics:
+      - conversion_rate
+      - cost_per_acquisition
+      - customer_acquisition_cost
+      - return_on_ad_spend
+      - marketing_qualified_leads
+      - sales_qualified_leads
+    
+    retention_metrics:
+      - customer_lifetime_value
+      - retention_rate
+      - churn_rate
+      - repeat_purchase_rate
+      - net_promoter_score
+      - customer_satisfaction_score
+
+  measurement_tools:
+    web_analytics:
+      - google_analytics
+      - adobe_analytics
+      - mixpanel
+      - hotjar
+      - crazy_egg
+    
+    social_media_analytics:
+      - native_platform_analytics
+      - hootsuite_insights
+      - sprout_social
+      - buffer_analytics
+      - socialbakers
+    
+    email_analytics:
+      - mailchimp_reports
+      - constant_contact_analytics
+      - hubspot_analytics
+      - campaign_monitor_insights
+    
+    paid_advertising_analytics:
+      - google_ads_reports
+      - facebook_ads_manager
+      - linkedin_campaign_manager
+      - bing_ads_intelligence
+
+  reporting_frameworks:
+    dashboard_components:
+      - executive_summary
+      - traffic_overview
+      - conversion_funnel
+      - channel_performance
+      - campaign_roi
+      - competitive_benchmarks
+    
+    reporting_frequency:
+      daily: ["ad spend", "website_traffic", "social_mentions"]
+      weekly: ["campaign_performance", "lead_generation", "content_engagement"]
+      monthly: ["comprehensive_analysis", "roi_calculations", "strategy_recommendations"]
+      quarterly: ["strategic_review", "competitive_analysis", "goal_assessment"]
+
+# ============================================================================
+# CONFIGURACIÓN DE CAMPAÑAS
+# ============================================================================
+
+campaign_management:
+  campaign_types:
+    product_launch:
+      phases: ["pre_launch", "launch", "post_launch"]
+      duration: "3-6 months"
+      channels: ["email", "social_media", "pr", "paid_ads", "content_marketing"]
+    
+    brand_awareness:
+      phases: ["research", "creative_development", "execution", "measurement"]
+      duration: "6-12 months"
+      channels: ["display_ads", "social_media", "influencer_marketing", "content_marketing"]
+    
+    lead_generation:
+      phases: ["audience_targeting", "offer_creation", "campaign_execution", "nurturing"]
+      duration: "3-9 months"
+      channels: ["paid_search", "social_ads", "email", "content_gating", "webinars"]
+    
+    customer_retention:
+      phases: ["segmentation", "personalization", "engagement", "loyalty_building"]
+      duration: "ongoing"
+      channels: ["email", "social_media", "loyalty_programs", "customer_support"]
+
+  optimization_strategies:
+    a_b_testing:
+      elements_to_test:
+        - headlines
+        - call_to_action_buttons
+        - images
+        - email_subject_lines
+        - landing_page_layouts
+        - ad_copy
+      
+      testing_methodology:
+        - hypothesis_formation
+        - test_design
+        - statistical_significance
+        - result_analysis
+        - implementation_decisions
+    
+    conversion_rate_optimization:
+      focus_areas:
+        - landing_page_optimization
+        - form_optimization
+        - checkout_process_improvement
+        - mobile_experience_enhancement
+        - page_speed_optimization
+        - trust_signal_implementation
+
+# ============================================================================
+# CONFIGURACIÓN DE HERRAMIENTAS TÉCNICAS
+# ============================================================================
+
+technical_tools:
+  data_integration:
+    apis:
+      - google_analytics_api
+      - facebook_graph_api
+      - twitter_api
+      - linkedin_api
+      - hubspot_api
+      - salesforce_api
+    
+    data_warehousing:
+      - google_bigquery
+      - amazon_redshift
+      - snowflake
+      - microsoft_azure_synapse
+    
+    visualization_tools:
+      - google_data_studio
+      - tableau
+      - power_bi
+      - looker
+      - chartio
+
+  automation_platforms:
+    marketing_automation:
+      - hubspot
+      - marketo
+      - pardot
+      - mailchimp
+      - constant_contact
+    
+    social_media_automation:
+      - hootsuite
+      - buffer
+      - sprout_social
+      - later
+      - socialbakers
+    
+    workflow_automation:
+      - zapier
+      - microsoft_power_automate
+      - integromat
+      - ifttt
