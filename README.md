@@ -1,9 +1,11 @@
-# 🤖 Marketing Multi-Agent System con CrewAI
+# 🤖 Multi-Agent System con CrewAI
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![CrewAI 0.20+](https://img.shields.io/badge/CrewAI-0.20+-green.svg)](https://github.com/crewAIInc/crewAI)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![GitHub](https://img.shields.io/badge/GitHub-lraigosov%2Fmulti--agent-blue?logo=github)](https://github.com/lraigosov/multi-agent)
+[![Release](https://img.shields.io/github/v/release/lraigosov/multi-agent?include_prereleases)](https://github.com/lraigosov/multi-agent/releases)
 
 Un sistema completo de marketing digital multi-agente desarrollado con **CrewAI** que proporciona análisis integral, estrategia competitiva y optimización de campañas mediante la colaboración de agentes especializados de IA.
 
@@ -91,8 +93,8 @@ poetry shell
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/marketing-multiagent.git
-cd marketing-multiagent
+git clone https://github.com/lraigosov/multi-agent.git
+cd multi-agent
 
 # Crear entorno virtual
 python -m venv venv
@@ -106,7 +108,7 @@ pip install -r requirements.txt
 
 ```bash
 # Después de clonar el repositorio
-cd marketing-multiagent
+cd multi-agent
 pip install -e .
 ```
 
@@ -1020,8 +1022,8 @@ async def analyze_marketing(request: MarketingAnalysisRequest):
 
 ```bash
 # Fork y clonar el repositorio
-git clone https://github.com/tu-usuario/marketing-multiagent.git
-cd marketing-multiagent
+git clone https://github.com/lraigosov/multi-agent.git
+cd multi-agent
 
 # Crear rama de feature
 git checkout -b feature/nueva-funcionalidad
