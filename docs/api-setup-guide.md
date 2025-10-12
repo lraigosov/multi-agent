@@ -178,7 +178,7 @@ curl -H "Authorization: Bearer $OPENAI_API_KEY" \
 
 | Proveedor | Modelo | Input | Output | Calidad | Velocidad |
 |-----------|---------|-------|---------|---------|-----------|
-| Google | Gemini-1.5-flash | GRATIS | GRATIS | ⭐⭐⭐⭐ | ⚡⚡⚡ |
+| Google | Gemini-2.5-flash | GRATIS | GRATIS | ⭐⭐⭐⭐⭐ | ⚡⚡⚡ |
 | OpenAI | GPT-3.5-turbo | $0.50 | $1.50 | ⭐⭐⭐ | ⚡⚡⚡ |
 | OpenAI | GPT-4o | $5.00 | $15.00 | ⭐⭐⭐⭐⭐ | ⚡⚡ |
 | Anthropic | Claude-3-haiku | $0.25 | $1.25 | ⭐⭐⭐⭐ | ⚡⚡⚡ |

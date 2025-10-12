@@ -9,6 +9,16 @@
 
 Un sistema completo de marketing digital multi-agente desarrollado con **CrewAI** que proporciona análisis integral, estrategia competitiva y optimización de campañas mediante la colaboración de agentes especializados de IA.
 
+## ✅ Sistema Funcionando
+
+![Ejecución Exitosa](docs/images/image.png)
+
+**Estado:** ✅ **COMPLETAMENTE FUNCIONAL**  
+**Modelo:** Google Gemini 2.5 Flash (gratuito)  
+**Última Prueba:** 11 enero 2025 - Análisis completo de marketing generado exitosamente
+
+El sistema multi-agente está **operativo y probado** con casos reales de análisis de mercado español.
+
 ## 🎯 Características Principales
 
 ### 🏗️ Arquitectura Multi-Dominio
@@ -182,11 +192,12 @@ El sistema soporta múltiples proveedores de LLM. **Necesitas al menos uno confi
 - **Costo**: Competitivo con OpenAI
 - **Configuración**: `ANTHROPIC_API_KEY=sk-ant-...`
 
-#### 3. 🔵 Google Gemini
-- **Modelos**: Gemini-1.5-pro, Gemini-1.5-flash
+#### 3. 🔵 Google Gemini ⭐ **FUNCIONANDO**
+- **Modelos**: Gemini-2.5-pro, Gemini-2.5-flash (actualizado 01/2025)
 - **Ventajas**: Multimodal, costo-efectivo, contexto ultra-largo
-- **Costo**: Generoso nivel gratuito
+- **Costo**: **GRATUITO** - Generoso nivel gratuito
 - **Configuración**: `GOOGLE_API_KEY=...`
+- **Estado**: ✅ Completamente probado y funcional
 
 #### 4. 🟡 Hugging Face
 - **Modelos**: Llama-3, Mixtral, Code Llama
@@ -341,6 +352,33 @@ for domain in domains:
 marketing_crews = registry.list_crews("marketing")
 sst_crews = registry.list_crews("sst")
 ```
+
+## 🚀 Demos Funcionales
+
+En el directorio `demos/` encontrarás ejemplos completamente funcionales del sistema:
+
+### Demo Simplificado (Recomendado)
+```bash
+# Análisis de mercado español con Gemini 2.5 Flash (GRATIS)
+python demos/demo_simple.py
+```
+**Resultado:** Análisis completo de herramientas de productividad empresarial en España
+
+### Demo Completo  
+```bash
+# Sistema multi-agente completo con 3 agentes especializados
+python demos/demo_gemini.py
+```
+
+### Demo Directo API
+```bash  
+# Prueba directa de conectividad con Google Gemini API
+python demos/demo_direct_gemini.py
+```
+
+**Configuración necesaria:** Solo requiere `GOOGLE_API_KEY` en el archivo `.env`
+
+Ver [documentación completa de configuración](docs/RESULTADO_FINAL.md) para detalles del funcionamiento.
 
 ## 🏗️ Arquitectura
 
@@ -969,6 +1007,8 @@ logging.basicConfig(
 ```
 
 ## 🚀 Despliegue en Producción
+
+![alt text](image.png)
 
 ### Docker
 
