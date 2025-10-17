@@ -45,6 +45,8 @@ El sistema multi-agente está **operativo y probado** con casos reales de análi
 - **Incident Investigator**: Análisis de causas raíz de incidentes
 - **Safety Trainer**: Desarrollo de programas de capacitación
 
+➡️ Documentación detallada del dominio: [SST Multi-Agent (docs/sst_multiagent.md)](docs/sst_multiagent.md)
+
 ### 🚀 Flows Avanzados
 **Marketing:**
 - **Marketing Intelligence Flow**: Análisis completo end-to-end
@@ -1099,6 +1101,7 @@ Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](L
 - [Documentación de CrewAI](https://docs.crewai.com/)
 - [Guía de Instalación Detallada](docs/installation.md)
 - [API Reference Completa](docs/api-reference.md)
+ - [SST Multi-Agent (documento detallado)](docs/sst_multiagent.md)
 
 ### Comunidad
 - [GitHub Issues](https://github.com/tu-usuario/marketing-multiagent/issues): Reportar bugs
