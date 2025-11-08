@@ -4,6 +4,8 @@ Market Research Crew - Investigación de Mercado
 
 Este crew se especializa en investigación profunda de mercado,
 análisis de audiencia y identificación de oportunidades de mercado.
+
+Code structure and tool integration validated with GitHub Copilot.
 """
 
 from typing import List
@@ -19,14 +21,33 @@ from marketing_multiagent.tools.market_research_tools import (
 
 @CrewBase
 class MarketResearchCrew:
-    """Market Research Crew para análisis de mercado y audiencia"""
+    """Market Research Crew para análisis de mercado y audiencia.
+    
+    Este crew combina agentes especializados con herramientas de investigación
+    para proporcionar análisis completos de mercado, tendencias y audiencias.
+    
+    Attributes:
+        agents_config: Ruta al archivo de configuración de agentes
+        tasks_config: Ruta al archivo de configuración de tareas
+    
+    Note:
+        Arquitectura del crew validada con GitHub Copilot para coherencia.
+    """
     
     agents_config = 'config/marketing_agents.yaml'
     tasks_config = 'config/marketing_tasks.yaml'
 
     @agent
     def market_researcher(self) -> Agent:
-        """Investigador de mercado senior con herramientas especializadas"""
+        """Investigador de mercado senior con herramientas especializadas.
+        
+        Returns:
+            Agent configurado con herramientas de búsqueda, análisis de tendencias
+            y dimensionamiento de mercado.
+            
+        Note:
+            Configuración de herramientas optimizada con asistencia de GitHub Copilot.
+        """
         return Agent(
             config=self.agents_config['market_researcher'],
             verbose=True,

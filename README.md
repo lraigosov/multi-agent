@@ -1159,6 +1159,14 @@ Este proyecto es una implementación personalizada que extiende CrewAI para caso
 - Marketing Digital (análisis de mercado, estrategia, optimización)
 - Seguridad y Salud en el Trabajo (evaluación de riesgos, compliance)
 
+### Herramientas de Desarrollo
+Durante el desarrollo de este proyecto se utilizó **GitHub Copilot** como asistente de programación para:
+- Validación de bloques de código críticos
+- Optimización de funciones y estructuras de datos
+- Generación de docstrings conformes a PEP 257
+- Revisión de buenas prácticas y patrones de diseño
+- Sugerencias de mejoras en legibilidad y mantenibilidad del código
+
 ### Contribuciones
 Las contribuciones de la comunidad son bienvenidas. Ver sección [Contribución](#-contribución) para más detalles.
 
