@@ -103,6 +103,5 @@ Si un demo falla:
 
 ## 📄 Documentación Adicional
 
-- [Resultado Final](../docs/RESULTADO_FINAL.md) - Resumen completo de la prueba exitosa
-- [Sistema Funcionando](../docs/SISTEMA_FUNCIONANDO.md) - Detalles técnicos de configuración
+- [Documentación SST Multi-Agent](../docs/sst_multiagent.md) - Arquitectura y flujos del dominio SST
 - [API Setup Guide](../docs/api-setup-guide.md) - Guía completa de configuración de APIs

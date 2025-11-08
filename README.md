@@ -219,7 +219,7 @@ El sistema soporta múltiples proveedores de LLM. **Necesitas al menos uno confi
 | OpenAI | GPT-4o | $0.005/$0.015 | $5 crédito inicial | Producción, alta calidad |
 | OpenAI | GPT-3.5-turbo | $0.001/$0.002 | $5 crédito inicial | Desarrollo, costo-efectivo |
 | Anthropic | Claude-3.5-sonnet | $0.003/$0.015 | $5 crédito inicial | Análisis complejo, contexto largo |
-| Google | Gemini-1.5-pro | $0.001/$0.003 | 15 req/min gratis | Desarrollo con contexto largo |
+| Google | Gemini-2.5-flash | GRATIS | 15 req/min gratis | Desarrollo rápido, prototipos |
 | Hugging Face | Llama-3-8B | $0.0002 | 1000 req/mes gratis | Experimentación, open source |
 
 > **💡 Recomendación**: Comienza con Gemini (gratuito) para desarrollo y GPT-4o para producción.
@@ -380,8 +380,6 @@ python demos/demo_direct_gemini.py
 
 **Configuración necesaria:** Solo requiere `GOOGLE_API_KEY` en el archivo `.env`
 
-Ver [documentación completa de configuración](docs/RESULTADO_FINAL.md) para detalles del funcionamiento.
-
 ## 🏗️ Arquitectura
 
 ### Estructura del Proyecto
@@ -403,19 +401,30 @@ multi-agent/
 │       ├── flows/                     # Flows SST
 │       └── tools/                     # Herramientas SST
 ├── config/                            # Configuraciones globales
-│   ├── domains.yaml                   # Configuración de dominios
-│   ├── marketing_agents.yaml           # Definición de agentes del dominio marketing
-│   ├── marketing_tasks.yaml            # Definición de tareas del dominio marketing
-│   ├── marketing_config.yaml           # Configuración técnica del dominio marketing
-│   ├── sst_agents.yaml                 # Definición de agentes del dominio SST
-│   ├── sst_tasks.yaml                  # Definición de tareas del dominio SST
-│   ├── sst_config.yaml                 # Configuración técnica del dominio SST
-│   └── domains.yaml                    # Registro central de dominios
+│   ├── domains.yaml                   # Registro central de dominios
+│   ├── marketing_agents.yaml          # Definición de agentes del dominio marketing
+│   ├── marketing_tasks.yaml           # Definición de tareas del dominio marketing
+│   ├── marketing_config.yaml          # Configuración técnica del dominio marketing
+│   ├── sst_agents.yaml                # Definición de agentes del dominio SST
+│   ├── sst_tasks.yaml                 # Definición de tareas del dominio SST
+│   └── sst_config.yaml                # Configuración técnica del dominio SST
+├── demos/                             # Demos funcionales
+│   ├── demo_simple.py                 # Demo simplificado marketing (2 agentes)
+│   ├── demo_sst.py                    # Demo SST (3 agentes)
+│   ├── demo_gemini.py                 # Demo completo marketing
+│   ├── demo_direct_gemini.py          # Test conectividad API
+│   └── README.md
 ├── examples/                          # Ejemplos por dominio
-│   ├── fintech_startup_analysis.py   # Marketing
+│   ├── fintech_startup_analysis.py    # Marketing
 │   ├── ecommerce_campaign_optimization.py
+│   ├── saas_competitive_analysis.py
+│   ├── healthtech_content_strategy.py
 │   ├── construction_risk_assessment.py # SST
 │   └── README.md
+├── docs/                              # Documentación
+│   ├── api-setup-guide.md             # Guía configuración APIs
+│   ├── sst_multiagent.md              # Documentación dominio SST
+│   └── images/                        # Imágenes para documentación
 ├── cli.py                             # CLI global desde raíz
 ├── outputs/                           # Resultados generados
 ├── logs/                              # Archivos de log
@@ -1058,7 +1067,13 @@ async def analyze_marketing(request: MarketingAnalysisRequest):
 
 ## 🤝 Contribución
 
-¡Las contribuciones son bienvenidas! Por favor lee nuestro [CONTRIBUTING.md](CONTRIBUTING.md) para detalles sobre nuestro código de conducta y el proceso para enviar pull requests.
+¡Las contribuciones son bienvenidas! Para contribuir:
+
+1. Fork el repositorio
+2. Crea una rama de feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios (`git commit -m 'feat: añadir nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
 
 ### Desarrollo Local
 
@@ -1093,15 +1108,14 @@ git push origin feature/nueva-funcionalidad
 
 ## 📄 Licencia
 
-Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
+Este proyecto está bajo la Licencia MIT.
 
 ## 🆘 Soporte
 
 ### Documentación
 - [Documentación de CrewAI](https://docs.crewai.com/)
-- [Guía de Instalación Detallada](docs/installation.md)
-- [API Reference Completa](docs/api-reference.md)
- - [SST Multi-Agent (documento detallado)](docs/sst_multiagent.md)
+- [Guía de Configuración de APIs](docs/api-setup-guide.md)
+- [SST Multi-Agent (documento detallado)](docs/sst_multiagent.md)
 
 ### Comunidad
 - [GitHub Issues](https://github.com/tu-usuario/marketing-multiagent/issues): Reportar bugs
@@ -1125,14 +1139,32 @@ R: Sí, soportamos OpenAI, Anthropic Claude, Google Gemini, Hugging Face, Groq y
 **P: ¿El sistema funciona en otros idiomas?**  
 R: Sí, puedes configurar agentes para trabajar en español, francés, etc. Los LLMs modernos son multilingües.
 
-## 🎉 Agradecimientos
+## 🎉 Agradecimientos y Créditos
 
-- **CrewAI Team**: Por el increíble framework de multi-agentes
-- **OpenAI**: Por los modelos GPT de alta calidad  
+### Framework y Tecnologías
+- **[CrewAI](https://github.com/joaomdmoura/crewAI)**: Framework de orquestación multi-agente desarrollado por [@joaomdmoura](https://github.com/joaomdmoura)
+  - Licencia: MIT
+  - Documentación: https://docs.crewai.com/
+- **[LiteLLM](https://github.com/BerriAI/litellm)**: Interfaz unificada para múltiples LLMs
+- **Google Gemini**: API de IA generativa gratuita para desarrollo
+- **OpenAI**: Modelos GPT de alta calidad
 - **Comunidad Open Source**: Por las herramientas y librerías utilizadas
+
+### Desarrollo y Mantenimiento
+**Desarrollado por:** [Luis Raigoso (@lraigosov)](https://github.com/lraigosov)  
+**GitHub:** [@LuisRai](https://github.com/lraigosov)  
+**Proyecto:** Sistema Multi-Agente para Marketing Digital y SST
+
+Este proyecto es una implementación personalizada que extiende CrewAI para casos de uso específicos en:
+- Marketing Digital (análisis de mercado, estrategia, optimización)
+- Seguridad y Salud en el Trabajo (evaluación de riesgos, compliance)
+
+### Contribuciones
+Las contribuciones de la comunidad son bienvenidas. Ver sección [Contribución](#-contribución) para más detalles.
 
 ---
 
-**Desarrollado con ❤️ usando CrewAI**
+**Desarrollado con ❤️ usando CrewAI**  
+**© 2025 Luis Raigoso (@lraigosov)**
 
 *¿Te gusta este proyecto? ¡Dale una ⭐ en GitHub!*
