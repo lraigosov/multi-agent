@@ -6,7 +6,7 @@
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![GitHub](https://img.shields.io/badge/GitHub-lraigosov%2Fmulti--agent-blue?logo=github)](https://github.com/lraigosov/multi-agent)
 
-Un sistema completo de marketing digital multi-agente desarrollado con **CrewAI** que proporciona análisis integral, estrategia competitiva y optimización de campañas mediante la colaboración de agentes especializados de IA.
+Un sistema multi-dominio de agentes autónomos desarrollado con **CrewAI** que aborda problemas complejos mediante la colaboración de agentes especializados de IA. Actualmente implementa dos dominios: **Marketing Digital** (análisis de mercado, estrategia competitiva y optimización de campañas) y **SST - Seguridad y Salud en el Trabajo** (evaluación de riesgos, cumplimiento normativo e investigación de incidentes).
 
 > **⚠️ PROYECTO EXPERIMENTAL**  
 > Este es un proyecto de aprendizaje y experimentación sobre **agent builders** y sistemas multi-agente autónomos. Forma parte de mi exploración práctica de frameworks especializados en orquestación de agentes IA, sus capacidades de reasoning, memoria contextual y colaboración inter-agente.
