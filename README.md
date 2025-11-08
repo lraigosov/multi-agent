@@ -9,9 +9,26 @@
 
 Un sistema completo de marketing digital multi-agente desarrollado con **CrewAI** que proporciona análisis integral, estrategia competitiva y optimización de campañas mediante la colaboración de agentes especializados de IA.
 
+> **⚠️ PROYECTO EXPERIMENTAL**  
+> Este es un proyecto de aprendizaje y experimentación sobre **agent builders** y sistemas multi-agente autónomos. Forma parte de mi exploración práctica de frameworks especializados en orquestación de agentes IA, sus capacidades de reasoning, memoria contextual y colaboración inter-agente.
+> 
+> **¿Por qué CrewAI y no herramientas como n8n?**  
+> Aunque [n8n](https://n8n.io/) es una excelente plataforma de automatización low-code con capacidades de IA, está fundamentalmente diseñada para **workflows deterministas** con nodos predefinidos. CrewAI, por otro lado, representa un paradigma diferente:
+> 
+> - **Autonomía vs. Determinismo**: Los agentes en CrewAI toman decisiones autónomas basadas en sus objetivos, no siguen rutas fijas
+> - **Reasoning Nativo**: Cada agente tiene capacidad de razonamiento, planificación y adaptación usando LLMs
+> - **Memoria Contextual**: Los agentes mantienen contexto entre tareas y pueden aprender de interacciones previas
+> - **Colaboración Emergente**: Los agentes se comunican, delegan tareas y coordinan acciones de forma natural
+> - **Especialización Profunda**: Cada agente puede ser un experto en su dominio con herramientas especializadas
+> 
+> n8n + IA es potente para automatizar procesos conocidos y conectar servicios. CrewAI es potente para **resolver problemas complejos** que requieren análisis, creatividad y toma de decisiones autónomas. Son herramientas complementarias, no competidoras.
+> 
+> Este proyecto sirve como laboratorio para entender las capacidades y limitaciones de los agent builders modernos en escenarios reales de negocio.
+
 ## ✅ Sistema Funcionando
 
 ![Ejecución Exitosa](docs/images/image.png)
+*Ejemplo de ejecución: Análisis de mercado español con 3 agentes coordinados (Market Researcher → Strategist → Content Creator)*
 
 **Estado:** ✅ **COMPLETAMENTE FUNCIONAL**  
 **Modelo:** Google Gemini 2.5 Flash (gratuito)  
@@ -67,6 +84,66 @@ El sistema multi-agente está **operativo y probado** con casos reales de análi
 - **Regulatory Search**: Búsqueda de normativa aplicable
 - **Risk Matrix**: Evaluación y priorización de riesgos
 - **Incident Analytics**: Análisis de patrones de incidentes
+
+## 🧪 Naturaleza Experimental y Aprendizaje
+
+### Objetivos del Proyecto
+Este repositorio documenta mi proceso de aprendizaje sobre **sistemas multi-agente autónomos** y sirve como:
+
+1. **Laboratorio de Experimentación**: Pruebas de patrones de coordinación entre agentes, memoria compartida y delegación de tareas
+2. **Comparativa de Enfoques**: Evaluación práctica de frameworks especializados (CrewAI, AutoGen, LangGraph) vs. orquestadores generales (n8n, Make, Zapier)
+3. **Banco de Pruebas**: Validación de casos de uso reales en marketing y SST con diferentes arquitecturas
+4. **Documentación de Hallazgos**: Registro de capacidades, limitaciones y trade-offs de cada enfoque
+
+### CrewAI vs. Orquestadores Tradicionales
+
+| Aspecto | n8n + IA | CrewAI (Agent Builders) |
+|---------|----------|-------------------------|
+| **Paradigma** | Workflow determinista con nodos IA | Agentes autónomos con objetivos |
+| **Toma de Decisiones** | Reglas if/else predefinidas | Reasoning dinámico con LLM |
+| **Adaptabilidad** | Requiere reprogramar el flow | Los agentes se adaptan al contexto |
+| **Memoria** | Estado entre nodos (limited) | Memoria episódica y semántica |
+| **Colaboración** | Secuencia fija de pasos | Coordinación emergente y delegación |
+| **Debugging** | Visual, fácil de trazar | Complejo, reasoning opaco |
+| **Casos de Uso Ideales** | Integraciones, ETL, automation | Análisis complejos, creatividad, decisiones |
+| **Curva de Aprendizaje** | Baja (visual, low-code) | Alta (programático, conceptual) |
+| **Control** | Total sobre el flujo | Parcial (los agentes deciden) |
+| **Costo Computacional** | Bajo (ejecución determinista) | Alto (múltiples llamadas LLM) |
+
+### Aprendizajes Clave
+
+**✅ Cuándo Usar Agent Builders:**
+- Problemas que requieren análisis multi-perspectiva (ej: evaluación de riesgos desde compliance, técnico y operacional)
+- Tareas creativas que se benefician de diferentes "puntos de vista" (ej: estrategia de marketing)
+- Escenarios donde el proceso no está completamente definido y requiere exploración
+- Necesidad de expertise especializado en cada fase del proceso
+
+**⚠️ Limitaciones Actuales:**
+- **No determinístico**: Los resultados pueden variar entre ejecuciones (by design)
+- **Costo**: Múltiples llamadas a LLMs incrementan costos vs. workflows simples
+- **Latencia**: La coordinación entre agentes añade tiempo de ejecución
+- **Debugging**: Más complejo rastrear el "por qué" de una decisión de agente
+- **Alucinaciones**: Los agentes pueden generar información incorrecta que otros agentes amplifiquen
+
+**🎯 Mejores Prácticas Descubiertas:**
+1. **Validación Humana**: Siempre revisar outputs críticos antes de actuar
+2. **Herramientas Específicas**: Dotar a los agentes de tools concretos reduce alucinaciones
+3. **Memoria Compartida**: Usar artefactos intermedios (archivos .md) para trazabilidad
+4. **Prompts Estructurados**: Context windows bien definidos mejoran consistencia
+5. **Hybrid Approach**: Combinar workflows deterministas (n8n) con agent reasoning (CrewAI) según la fase
+
+### Para Quién Es Este Proyecto
+
+- 🎓 **Aprendices** explorando agent builders y sistemas autónomos
+- 🔬 **Investigadores** evaluando arquitecturas multi-agente
+- 💼 **Profesionales** considerando adopción de LLM agents en producción
+- 🛠️ **Desarrolladores** buscando ejemplos prácticos de CrewAI en dominios reales
+
+**No recomendado para:**
+- Producción crítica sin supervisión humana
+- Casos de uso donde se requiere 100% de determinismo
+- Presupuestos muy limitados (múltiples llamadas LLM)
+- Equipos sin experiencia en LLMs/prompting
 
 ## 📋 Tabla de Contenidos
 
