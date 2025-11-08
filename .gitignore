@@ -12,6 +12,7 @@ outputs/
 reports/
 temp/
 cache/
+articles/
 
 # Python
 __pycache__/
