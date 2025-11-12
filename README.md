@@ -570,17 +570,17 @@ graph TB
     RAC --> |Incident Trigger| IIF
     IIF --> O3
     
-    style Marketing fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
-    style SST fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
-    style Input fill:#f3f4f6,stroke:#6b7280,stroke-width:2px
-    style Output fill:#d1fae5,stroke:#10b981,stroke-width:2px
+    style Marketing fill:#60a5fa,stroke:#1e40af,stroke-width:2px,color:#000
+    style SST fill:#fbbf24,stroke:#b45309,stroke-width:2px,color:#000
+    style Input fill:#9ca3af,stroke:#374151,stroke-width:2px,color:#000
+    style Output fill:#34d399,stroke:#065f46,stroke-width:2px,color:#000
     
-    style MRC fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
-    style CAC fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
-    style CSC fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
-    style DMC fill:#bfdbfe,stroke:#2563eb,stroke-width:2px
-    style RAC fill:#fde68a,stroke:#d97706,stroke-width:2px
-    style IIF fill:#fde68a,stroke:#d97706,stroke-width:2px
+    style MRC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#fff
+    style CAC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#fff
+    style CSC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#fff
+    style DMC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#fff
+    style RAC fill:#f59e0b,stroke:#92400e,stroke-width:2px,color:#000
+    style IIF fill:#f59e0b,stroke:#92400e,stroke-width:2px,color:#000
 ```
 
 **Campaign Optimization Flow (Implementado)**
@@ -591,10 +591,10 @@ graph LR
     B --> C[Optimization Agent]
     C --> D[Implementation Recommendations]
     
-    style A fill:#f3f4f6,stroke:#6b7280,stroke-width:2px
-    style B fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
-    style C fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
-    style D fill:#d1fae5,stroke:#10b981,stroke-width:2px
+    style A fill:#9ca3af,stroke:#374151,stroke-width:2px,color:#000
+    style B fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#fff
+    style C fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#fff
+    style D fill:#34d399,stroke:#065f46,stroke-width:2px,color:#000
 ```
 
 **SST Incident Investigation Flow (Implementado)**
@@ -606,11 +606,11 @@ graph LR
     C --> D[Corrective Actions Agent]
     D --> E[Action Plan]
     
-    style A fill:#f3f4f6,stroke:#6b7280,stroke-width:2px
-    style B fill:#fde68a,stroke:#d97706,stroke-width:2px
-    style C fill:#fde68a,stroke:#d97706,stroke-width:2px
-    style D fill:#fde68a,stroke:#d97706,stroke-width:2px
-    style E fill:#d1fae5,stroke:#10b981,stroke-width:2px
+    style A fill:#9ca3af,stroke:#374151,stroke-width:2px,color:#000
+    style B fill:#f59e0b,stroke:#92400e,stroke-width:2px,color:#000
+    style C fill:#f59e0b,stroke:#92400e,stroke-width:2px,color:#000
+    style D fill:#f59e0b,stroke:#92400e,stroke-width:2px,color:#000
+    style E fill:#34d399,stroke:#065f46,stroke-width:2px,color:#000
 ```
 
 ### Crews y Responsabilidades por Dominio
