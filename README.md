@@ -49,17 +49,13 @@ El sistema multi-agente está **operativo y probado** con casos reales de análi
 - **Marketing Strategist**: Desarrollo de estrategias integrales
 - **Content Creator**: Creación y planificación de contenido
 - **SEO Specialist**: Optimización para motores de búsqueda
-- **Social Media Specialist**: Estrategias multi-plataforma
 - **Data Analyst**: Análisis de métricas y performance
 - **Campaign Manager**: Gestión y optimización de campañas
 - **Copywriter**: Creación de copy persuasivo
-- **Email Marketing Specialist**: Estrategias de email marketing
 
 ### 🦺 Dominio SST - Agentes Especializados
 - **Risk Analyst**: Identificación y evaluación de riesgos laborales
 - **Compliance Officer**: Verificación de cumplimiento normativo
-- **Incident Investigator**: Análisis de causas raíz de incidentes
-- **Safety Trainer**: Desarrollo de programas de capacitación
 
 ➡️ Documentación detallada del dominio: [SST Multi-Agent (docs/sst_multiagent.md)](docs/sst_multiagent.md)
 
@@ -70,19 +66,16 @@ El sistema multi-agente está **operativo y probado** con casos reales de análi
 
 **SST:**
 - **Incident Investigation Flow**: Investigación sistemática de incidentes
-- **Risk Assessment Flow**: Evaluación integral de riesgos
 
 ### 🛠️ Herramientas Personalizadas
 **Marketing:**
-- **Market Research**: Análisis de tendencias, insights de audiencia
-- **Competitive Analysis**: Monitoreo y análisis competitivo  
-- **Content Tools**: Generación de ideas, optimización SEO
-- **Analytics**: Tracking de performance y cálculo de ROI
+- **Market Research**: TrendAnalysisTool, AudienceInsightsTool, MarketSizingTool
+- **Competitive Analysis**: CompetitorScannerTool, PricingAnalysisTool, ContentAuditTool
+- **Content Tools**: ContentIdeaGeneratorTool, SEOOptimizationTool, TrendingTopicsTool
+- **Analytics**: PerformanceTrackerTool, ROICalculatorTool
 
 **SST:**
-- **Regulatory Search**: Búsqueda de normativa aplicable
-- **Risk Matrix**: Evaluación y priorización de riesgos
-- **Incident Analytics**: Análisis de patrones de incidentes
+- **Regulatory Search**: RegulatorySearchTool para búsqueda de normativa aplicable
 
 ## 🧪 Naturaleza Experimental y Aprendizaje
 
@@ -161,14 +154,15 @@ Este repositorio documenta mi proceso de aprendizaje sobre **sistemas multi-agen
 ### Prerrequisitos
 - Python 3.10 o superior
 - Poetry (recomendado) o pip
-- API keys para OpenAI y Serper
+- API key para LLM (OpenAI, Google Gemini, etc.)
+- API key para Serper (opcional, solo si usas búsquedas web en agentes)
 
 ### Opción 1: Con Poetry (Recomendado)
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/marketing-multiagent.git
-cd marketing-multiagent
+git clone https://github.com/lraigosov/multi-agent.git
+cd multi-agent
 
 # Instalar dependencias con Poetry
 poetry install
@@ -220,7 +214,8 @@ Edita `.env` con tus credenciales:
 # 🤖 API de IA Generativa (OBLIGATORIA)
 OPENAI_API_KEY=sk-tu-api-key-aqui
 
-# 🔍 API de Búsqueda (OBLIGATORIA)
+# 🔍 API de Búsqueda Web (OPCIONAL - Solo para agentes que usan SerperDevTool)
+# Requerida si quieres que los agentes busquen información actualizada en Google
 SERPER_API_KEY=tu-serper-api-key
 
 # 🛠️ Configuración de CrewAI
@@ -249,10 +244,12 @@ DEBUG=false
 3. Ve a API Keys y crea una nueva key
 4. Copia el valor a `OPENAI_API_KEY`
 
-#### Serper API Key (Para búsquedas web)
+#### Serper API Key (Opcional - Para búsquedas web)
 1. Visita [Serper.dev](https://serper.dev/)
 2. Regístrate para obtener una API key gratuita
 3. Copia el valor a `SERPER_API_KEY`
+
+**Nota**: Solo necesitas Serper si quieres que los agentes realicen búsquedas actualizadas en Google. Los agentes de marketing usan `SerperDevTool` para investigación de mercado, análisis de competidores y tendencias. Si no configuras esta key, los agentes funcionarán con capacidades limitadas (sin acceso a información web actualizada).
 
 ### 🧠 Opciones de Modelos de IA Generativa
 
@@ -532,10 +529,10 @@ graph TD
 #### Marketing Domain
 | Crew | Agentes Principales | Responsabilidad |
 |------|-------------------|-----------------|
-| **MarketResearchCrew** | Market Researcher, Data Analyst | Análisis de mercado, tendencias, insights de audiencia |
-| **CompetitorAnalysisCrew** | Competitor Analyst, Marketing Strategist | Análisis competitivo, positioning, diferenciación |
+| **MarketResearchCrew** | Market Researcher, Audience Analyst | Análisis de mercado, tendencias, insights de audiencia |
+| **CompetitorAnalysisCrew** | Competitor Analyst, Content Analyst | Análisis competitivo, positioning, auditoría de contenido |
 | **ContentStrategyCrew** | Content Creator, SEO Specialist, Copywriter | Estrategia de contenido, SEO, copy |
-| **DigitalMarketingCrew** | Campaign Manager, Social Media, Email Specialist | Campañas, social media, email marketing |
+| **DigitalMarketingCrew** | Marketing Strategist, Campaign Manager, Data Analyst | Estrategia integral, coordinación de campañas, analytics |
 
 #### SST Domain
 | Crew | Agentes Principales | Responsabilidad |
@@ -1095,8 +1092,6 @@ logging.basicConfig(
 
 ## 🚀 Despliegue en Producción
 
-![alt text](image.png)
-
 ### Docker
 
 ```dockerfile
@@ -1115,7 +1110,7 @@ CMD ["python", "-m", "marketing_multiagent.main"]
 ```yaml
 version: '3.8'
 services:
-  marketing-multiagent:
+  multi-agent:
     build: .
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
@@ -1194,8 +1189,8 @@ Este proyecto está bajo la Licencia MIT.
 - [SST Multi-Agent (documento detallado)](docs/sst_multiagent.md)
 
 ### Comunidad
-- [GitHub Issues](https://github.com/tu-usuario/marketing-multiagent/issues): Reportar bugs
-- [GitHub Discussions](https://github.com/tu-usuario/marketing-multiagent/discussions): Preguntas y discusión
+- [GitHub Issues](https://github.com/lraigosov/multi-agent/issues): Reportar bugs
+- [GitHub Discussions](https://github.com/lraigosov/multi-agent/discussions): Preguntas y discusión
 - [Discord Community](https://discord.gg/crewai): Comunidad CrewAI
 
 ### FAQ
