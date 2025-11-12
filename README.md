@@ -575,10 +575,10 @@ graph TB
     style Input fill:#9ca3af,stroke:#374151,stroke-width:2px,color:#000
     style Output fill:#34d399,stroke:#065f46,stroke-width:2px,color:#000
     
-    style MRC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#fff
-    style CAC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#fff
-    style CSC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#fff
-    style DMC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#fff
+    style MRC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#000
+    style CAC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#000
+    style CSC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#000
+    style DMC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#000
     style RAC fill:#f59e0b,stroke:#92400e,stroke-width:2px,color:#000
     style IIF fill:#f59e0b,stroke:#92400e,stroke-width:2px,color:#000
 ```
@@ -592,8 +592,8 @@ graph LR
     C --> D[Implementation Recommendations]
     
     style A fill:#9ca3af,stroke:#374151,stroke-width:2px,color:#000
-    style B fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#fff
-    style C fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#fff
+    style B fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#000
+    style C fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#000
     style D fill:#34d399,stroke:#065f46,stroke-width:2px,color:#000
 ```
 
