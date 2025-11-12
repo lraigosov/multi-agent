@@ -508,20 +508,97 @@ multi-agent/
 
 ### Flujo de Datos
 
+**Arquitectura Multi-Agente Multi-Dominio**
+
 ```mermaid
-graph TD
-    A[Input: Industry + Audience] --> B[Marketing Intelligence Flow]
-    B --> C[Market Research Crew]
-    B --> D[Competitor Analysis Crew]
-    B --> E[Content Strategy Crew]
-    C --> F[Market Insights]
-    D --> G[Competitive Analysis]
-    E --> H[Content Strategy]
-    F --> I[Digital Marketing Crew]
-    G --> I
-    H --> I
-    I --> J[Final Marketing Strategy]
-    J --> K[Optimization Recommendations]
+graph TB
+    subgraph Input["📥 INPUT"]
+        I1[Industry + Audience + Objectives]
+    end
+    
+    subgraph Marketing["🎯 DOMINIO MARKETING"]
+        subgraph MRC["Market Research Crew"]
+            MR1[Market Researcher Agent]
+            MR2[Audience Analyst Agent]
+        end
+        
+        subgraph CAC["Competitor Analysis Crew"]
+            CA1[Competitor Analyst Agent]
+            CA2[Content Analyst Agent]
+        end
+        
+        subgraph CSC["Content Strategy Crew"]
+            CS1[Content Creator Agent]
+            CS2[SEO Specialist Agent]
+            CS3[Copywriter Agent]
+        end
+        
+        subgraph DMC["Digital Marketing Crew"]
+            DM1[Marketing Strategist Agent]
+            DM2[Campaign Manager Agent]
+            DM3[Data Analyst Agent]
+        end
+    end
+    
+    subgraph SST["🦺 DOMINIO SST"]
+        subgraph RAC["Risk Assessment Crew"]
+            RA1[Risk Analyst Agent]
+            RA2[Compliance Officer Agent]
+        end
+        
+        subgraph IIF["Incident Investigation Flow"]
+            II1[Evidence Collection Agent]
+            II2[Root Cause Analysis Agent]
+            II3[Corrective Actions Agent]
+        end
+    end
+    
+    subgraph Output["📤 OUTPUT"]
+        O1[Marketing Strategy]
+        O2[Risk Assessment Report]
+        O3[Incident Investigation]
+    end
+    
+    I1 --> MRC
+    MRC --> |Colaboración| CAC
+    CAC --> |Insights| CSC
+    CSC --> |Strategy| DMC
+    DMC --> O1
+    
+    I1 --> RAC
+    RAC --> O2
+    RAC --> |Incident Trigger| IIF
+    IIF --> O3
+    
+    style Marketing fill:#e1f5ff
+    style SST fill:#fff4e1
+    style Input fill:#f0f0f0
+    style Output fill:#e8f5e9
+```
+
+**Campaign Optimization Flow (Implementado)**
+
+```mermaid
+graph LR
+    A[Campaign Data] --> B[Performance Analysis Agent]
+    B --> C[Optimization Agent]
+    C --> D[Implementation Recommendations]
+    
+    style A fill:#f0f0f0
+    style D fill:#e8f5e9
+```
+
+**SST Incident Investigation Flow (Implementado)**
+
+```mermaid
+graph LR
+    A[Incident Report] --> B[Evidence Collection Agent]
+    B --> C[Root Cause Analysis Agent]
+    C --> D[Corrective Actions Agent]
+    D --> E[Action Plan]
+    
+    style A fill:#f0f0f0
+    style E fill:#e8f5e9
 ```
 
 ### Crews y Responsabilidades por Dominio
