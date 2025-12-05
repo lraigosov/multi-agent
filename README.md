@@ -514,6 +514,7 @@ multi-agent/
 graph TB
     subgraph Input["📥 INPUT"]
         I1[Industry + Audience + Objectives]
+        I2[ETL Configuration]
     end
     
     subgraph Marketing["🎯 DOMINIO MARKETING"]
@@ -553,10 +554,27 @@ graph TB
         end
     end
     
+    subgraph ETL["📊 DOMINIO ETL"]
+        subgraph EUC["Use Cases (No LLMs)"]
+            EU1[IngestData]
+            EU2[TransformData]
+            EU3[ValidateData]
+            EU4[LoadData]
+        end
+        
+        subgraph EAD["Adapters (Hexagonal)"]
+            EA1[SourceAdapter]
+            EA2[TransformAdapter]
+            EA3[ValidationAdapter]
+            EA4[DestinationAdapter]
+        end
+    end
+    
     subgraph Output["📤 OUTPUT"]
         O1[Marketing Strategy]
         O2[Risk Assessment Report]
         O3[Incident Investigation]
+        O4[Transformed Data]
     end
     
     I1 --> MRC
@@ -570,8 +588,16 @@ graph TB
     RAC --> |Incident Trigger| IIF
     IIF --> O3
     
+    I2 --> EU1
+    EU1 --> EA1
+    EU2 --> EA2
+    EU3 --> EA3
+    EU4 --> EA4
+    EA4 --> O4
+    
     style Marketing fill:#60a5fa,stroke:#1e40af,stroke-width:2px,color:#000
     style SST fill:#fbbf24,stroke:#b45309,stroke-width:2px,color:#000
+    style ETL fill:#8b5cf6,stroke:#5b21b6,stroke-width:2px,color:#fff
     style Input fill:#9ca3af,stroke:#374151,stroke-width:2px,color:#000
     style Output fill:#34d399,stroke:#065f46,stroke-width:2px,color:#000
     
@@ -581,6 +607,8 @@ graph TB
     style DMC fill:#3b82f6,stroke:#1e3a8a,stroke-width:2px,color:#000
     style RAC fill:#f59e0b,stroke:#92400e,stroke-width:2px,color:#000
     style IIF fill:#f59e0b,stroke:#92400e,stroke-width:2px,color:#000
+    style EUC fill:#a78bfa,stroke:#6d28d9,stroke-width:2px,color:#fff
+    style EAD fill:#a78bfa,stroke:#6d28d9,stroke-width:2px,color:#fff
 ```
 
 **Campaign Optimization Flow (Implementado)**

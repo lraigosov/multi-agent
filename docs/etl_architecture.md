@@ -2,6 +2,53 @@
 
 **Estado Actual**: MVP con casos de uso funcionales. CrewAI Flow y Crew están disponibles como extensión opcional.
 
+## Diagrama de Flujo (Mermaid)
+
+```mermaid
+graph TB
+    subgraph Input["📥 INPUT"]
+        I1[ETL Configuration]
+        I2[Data Source]
+    end
+    
+    subgraph Processing["⚙️ PROCESAMIENTO"]
+        subgraph UC["Use Cases"]
+            UC1["IngestData<br/>(SourcePort)"]
+            UC2["TransformData<br/>(TransformPort)"]
+            UC3["ReconcileJobResult<br/>(ValidationPort)"]
+            UC4["LoadData<br/>(DestinationPort)"]
+        end
+        
+        subgraph AD["Adapters"]
+            AD1["FileSourceAdapter"]
+            AD2["PandasTransformAdapter"]
+            AD3["ValidationAdapter"]
+            AD4["FileDestinationAdapter"]
+        end
+    end
+    
+    subgraph Output["📤 OUTPUT"]
+        O1[Transformed Data]
+    end
+    
+    I1 --> UC1
+    I2 --> UC1
+    UC1 --> AD1
+    AD1 --> UC2
+    UC2 --> AD2
+    AD2 --> UC3
+    UC3 --> AD3
+    AD3 --> UC4
+    UC4 --> AD4
+    AD4 --> O1
+    
+    style Processing fill:#8b5cf6,stroke:#5b21b6,stroke-width:2px,color:#fff
+    style UC fill:#a78bfa,stroke:#6d28d9,stroke-width:2px,color:#fff
+    style AD fill:#c4b5fd,stroke:#7c3aed,stroke-width:2px,color:#000
+    style Input fill:#9ca3af,stroke:#374151,stroke-width:2px,color:#000
+    style Output fill:#34d399,stroke:#065f46,stroke-width:2px,color:#000
+```
+
 ## Diagrama Textual (Pseudo-C4)
 
 ```
