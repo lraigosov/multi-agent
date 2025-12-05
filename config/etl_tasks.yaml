@@ -1,0 +1,49 @@
+# ETL Tasks Configuration
+
+parse_user_request:
+  description: >
+    Parse user ETL request to identify source, destination, transformations, and constraints
+  expected_output: >
+    Structured JSON with source_uri, source_format, dest_uri, dest_format, mappings, and rules
+
+ingest_data_task:
+  description: >
+    Read data from source using appropriate adapter and return DataBatch with schema and stats
+  expected_output: >
+    DataBatch object with raw data (DataFrame), inferred schema, row/column counts, and metadata
+
+profile_schema_task:
+  description: >
+    Analyze DataBatch to infer types, detect nulls, duplicates, outliers, and propose data contract
+  expected_output: >
+    Data profiling report with types, cardinalities, quality issues, and recommendations
+
+define_transformation_task:
+  description: >
+    Define transformation plan mapping source to target schema with cleansing and business rules
+  expected_output: >
+    TransformationJob with source_schema, target_schema, mappings, and transformation rules
+
+apply_transformation_task:
+  description: >
+    Apply transformations to DataBatch using defined mappings and rules
+  expected_output: >
+    Transformed DataBatch ready for validation
+
+validate_quality_task:
+  description: >
+    Execute data quality checks (nulls, duplicates, types) and generate validation report
+  expected_output: >
+    Validation report with status (pass/warning/fail), issues detected, and fitness decision
+
+load_destination_task:
+  description: >
+    Write validated DataBatch to destination using appropriate adapter
+  expected_output: >
+    Load confirmation with path, rows written, and any warnings
+
+log_and_learn_task:
+  description: >
+    Log pipeline execution, analyze errors, and suggest improvements for future runs
+  expected_output: >
+    Execution log with timings, errors, and autocorrection suggestions

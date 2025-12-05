@@ -186,3 +186,11 @@ registry.register(
     crews_module="sst_multiagent.crews",
     flows_module="sst_multiagent.flows",
 )
+
+registry.register(
+    key="etl",
+    package="etl_multiagent",
+    description="Dominio ETL multi-agente con arquitectura hexagonal",
+    crews_module="etl_multiagent.crews",
+    flows_module="etl_multiagent.flows",
+)

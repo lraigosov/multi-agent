@@ -1,0 +1,107 @@
+# ETL Tools Configuration
+# Specialized tools for ETL agents
+
+file_reader_tool:
+  name: "FileReaderTool"
+  description: "Read files from local filesystem (CSV, Parquet, Excel)"
+  supported_formats:
+    - csv
+    - parquet
+    - xlsx
+    - xls
+    - json
+  options:
+    encoding: "utf-8"
+    infer_schema: true
+    sample_rows: 1000
+
+cloud_storage_tool:
+  name: "CloudStorageTool"
+  description: "Read files from S3/GCS buckets"
+  supported_providers:
+    - s3
+    - gcs
+    - azure_blob
+  authentication:
+    - credentials_file
+    - environment_variables
+
+database_reader_tool:
+  name: "DatabaseReaderTool"
+  description: "Query databases (Postgres, MySQL, SQL Server)"
+  supported_databases:
+    - postgresql
+    - mysql
+    - mssql
+    - bigquery
+  connection_options:
+    - connection_string
+    - host_port_auth
+
+schema_inference_tool:
+  name: "SchemaInferenceTool"
+  description: "Infer schema and data types from raw data"
+  capabilities:
+    - type_detection
+    - cardinality_analysis
+    - null_detection
+    - pattern_recognition
+
+data_profiling_tool:
+  name: "DataProfilingTool"
+  description: "Generate data profiling reports with statistics"
+  metrics:
+    - row_count
+    - column_count
+    - missing_values
+    - duplicates
+    - unique_values
+    - distributions
+    - outliers
+
+transformation_engine_tool:
+  name: "TransformationEngineTool"
+  description: "Apply transformations using pandas/SQL"
+  operations:
+    - column_mapping
+    - type_casting
+    - cleansing
+    - normalization
+    - aggregation
+    - enrichment
+
+validation_engine_tool:
+  name: "ValidationEngineTool"
+  description: "Execute data quality checks"
+  checks:
+    - null_checks
+    - duplicate_checks
+    - type_checks
+    - range_checks
+    - pattern_checks
+    - referential_integrity
+
+file_writer_tool:
+  name: "FileWriterTool"
+  description: "Write data to files (CSV, Parquet, Excel)"
+  supported_formats:
+    - csv
+    - parquet
+    - xlsx
+    - json
+  options:
+    compression: "snappy"
+    partitioning: false
+
+database_writer_tool:
+  name: "DatabaseWriterTool"
+  description: "Write data to databases and warehouses"
+  supported_targets:
+    - postgresql
+    - bigquery
+    - snowflake
+    - redshift
+  modes:
+    - replace
+    - append
+    - upsert

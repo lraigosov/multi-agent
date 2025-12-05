@@ -11,6 +11,7 @@ readme = "README.md"
 packages = [
   {include = "marketing_multiagent", from = "src"},
   {include = "sst_multiagent", from = "src"},
+  {include = "etl_multiagent", from = "src"},
   {include = "multiagent", from = "src"},
 ]
 

@@ -18,6 +18,9 @@ from dotenv import load_dotenv
 
 from .registry import registry
 
+# Compute domain choices dynamically to avoid hardcoding
+DOMAIN_CHOICES = [d.key for d in registry.get_domains()]
+
 
 def setup_env():
     load_dotenv()
@@ -71,7 +74,7 @@ def list_flows(domain: str):
 
 
 @cli.command("run-crew")
-@click.option("--domain", required=True, type=click.Choice(["marketing", "sst"]))
+@click.option("--domain", required=True, type=click.Choice(DOMAIN_CHOICES))
 @click.option("--crew", required=True, help="Nombre de la clase del crew a ejecutar")
 @click.option("--inputs", help="JSON string con inputs para kickoff")
 def run_crew(domain: str, crew: str, inputs: Optional[str]):
@@ -100,7 +103,7 @@ def run_crew(domain: str, crew: str, inputs: Optional[str]):
 
 
 @cli.command("run-flow")
-@click.option("--domain", required=True, type=click.Choice(["marketing", "sst"]))
+@click.option("--domain", required=True, type=click.Choice(DOMAIN_CHOICES))
 @click.option("--flow", required=True, help="Nombre de la clase del flow a ejecutar")
 @click.option("--state", help="JSON string con estado inicial del flow")
 def run_flow(domain: str, flow: str, state: Optional[str]):

@@ -21,3 +21,13 @@ domains:
     agents_config: config/sst_agents.yaml
     tasks_config: config/sst_tasks.yaml
     tools_config: config/sst_config.yaml
+
+  etl:
+    enabled: true
+    package: etl_multiagent
+    description: "Dominio ETL multi-agente con arquitectura hexagonal"
+    crews_module: etl_multiagent.crews
+    flows_module: etl_multiagent.flows
+    agents_config: config/etl_agents.yaml
+    tasks_config: config/etl_tasks.yaml
+    tools_config: config/etl_config.yaml
