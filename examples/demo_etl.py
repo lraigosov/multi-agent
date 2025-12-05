@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """
-ETL Pipeline Demo - Hexagonal Architecture with CrewAI
+ETL Pipeline Demo - Hexagonal Architecture
 
-Demonstrates end-to-end ETL flow using use cases, ports, and adapters.
+Demonstrates end-to-end ETL using use cases, ports, and adapters (no CrewAI agents).
 """
 from pathlib import Path
 import pandas as pd
 
-from etl_multiagent.flows.etl_pipeline_flow import ETLPipelineFlow, ETLFlowState
+from etl_multiagent.domain.entities import DataSource, DataBatch, TransformationJob, DataDestination
+from etl_multiagent.domain.use_cases import IngestData, TransformData, LoadData, ReconcileJobResult
+from etl_multiagent.adapters.sources import FileSourceAdapter
+from etl_multiagent.adapters.destinations import FileDestinationAdapter
+from etl_multiagent.adapters.transformers import PandasTransformAdapter, ValidationAdapter
 
 
 def create_sample_data():
@@ -31,7 +35,7 @@ def create_sample_data():
 
 
 def run_etl_success_case():
-    """Demo: Successful ETL pipeline execution."""
+    """Demo: Successful ETL pipeline execution using use cases."""
     print("\n" + "="*60)
     print("CASO DE ÉXITO: ETL Pipeline con validación OK")
     print("="*60)
@@ -41,39 +45,63 @@ def run_etl_success_case():
     output_dir.mkdir(exist_ok=True)
     output_file = output_dir / "sample_output.csv"
     
-    state = ETLFlowState(
-        source_uri=str(sample_file),
-        source_format="csv",
-        dest_uri=str(output_file),
-        dest_format="csv",
-        mappings={
-            "employee_id": "id",
-            "employee_name": "name",
-            "employee_age": "age",
-        },
-        target_schema={
-            "employee_id": "int64",
-            "employee_name": "object",
-            "employee_age": "int64",
-        },
-    )
-    
-    flow = ETLPipelineFlow()
-    flow.state = state
-    
     try:
-        result = flow.kickoff()
+        # 1. Ingest data from source
+        print("\n🔹 Step 1: Ingest data from source")
+        source = DataSource(
+            name="sample_input",
+            kind="file",
+            uri=str(sample_file),
+            format="csv",
+        )
+        ingest_uc = IngestData(source_port=FileSourceAdapter())
+        batch = ingest_uc.execute(source)
+        print(f"  ✓ Ingested {batch.stats['rows']} rows, {batch.stats['cols']} columns")
         
-        print("\n📊 Pipeline Result:")
-        print(f"  - Batch rows: {state.batch.stats['rows'] if state.batch else 'N/A'}")
-        print(f"  - Validation: {state.validation_report.get('status') if state.validation_report else 'N/A'}")
-        print(f"  - Load result: {state.load_result.get('status') if state.load_result else 'N/A'}")
-        print(f"  - Output: {state.load_result.get('path') if state.load_result else 'N/A'}")
+        # 2. Transform data
+        print("\n🔹 Step 2: Transform data with mappings")
+        job = TransformationJob(
+            source_schema=batch.schema or {},
+            target_schema={
+                "employee_id": "int64",
+                "employee_name": "object",
+                "employee_age": "int64",
+            },
+            mappings={
+                "employee_id": "id",
+                "employee_name": "name",
+                "employee_age": "age",
+            },
+        )
+        transform_uc = TransformData(transform_port=PandasTransformAdapter())
+        batch = transform_uc.execute(batch, job)
+        print(f"  ✓ Transformed to {len(batch.raw.columns)} columns")
         
-        if state.errors:
-            print(f"\n⚠️  Errors: {state.errors}")
-        else:
-            print("\n✅ Pipeline completed successfully!")
+        # 3. Validate data quality
+        print("\n🔹 Step 3: Validate data quality")
+        validation_uc = ReconcileJobResult(validation_port=ValidationAdapter())
+        validation_report = validation_uc.execute(
+            batch,
+            rules={"check_nulls": True, "check_duplicates": True}
+        )
+        print(f"  ✓ Validation status: {validation_report['status']}")
+        if validation_report.get('issues'):
+            for issue in validation_report['issues']:
+                print(f"    ⚠️  {issue}")
+        
+        # 4. Load to destination
+        print("\n🔹 Step 4: Load to destination")
+        destination = DataDestination(
+            name="sample_output",
+            kind="file",
+            uri=str(output_file),
+            format="csv",
+        )
+        load_uc = LoadData(destination_port=FileDestinationAdapter())
+        load_result = load_uc.execute(batch, destination)
+        print(f"  ✓ Loaded {load_result['rows_written']} rows to {load_result['path']}")
+        
+        print("\n✅ Pipeline completed successfully!")
             
     except Exception as e:
         print(f"\n❌ Pipeline failed: {e}")
@@ -85,29 +113,24 @@ def run_etl_failure_case():
     print("CASO DE FALLO CONTROLADO: Archivo fuente no existe")
     print("="*60)
     
-    state = ETLFlowState(
-        source_uri="data/nonexistent_file.csv",
-        source_format="csv",
-        dest_uri="outputs/will_not_be_created.csv",
-        dest_format="csv",
-        mappings={},
-        target_schema={},
-    )
-    
-    flow = ETLPipelineFlow()
-    flow.state = state
-    
     try:
-        result = flow.kickoff()
+        # Intentar leer archivo inexistente
+        print("\n🔹 Attempting to ingest non-existent file")
+        source = DataSource(
+            name="nonexistent",
+            kind="file",
+            uri="data/nonexistent_file.csv",
+            format="csv",
+        )
+        ingest_uc = IngestData(source_port=FileSourceAdapter())
+        batch = ingest_uc.execute(source)
         
-        if state.errors:
-            print(f"\n⚠️  Errors capturados correctamente:")
-            for err in state.errors:
-                print(f"  - {err}")
-            print("\n✅ Error handling funcionó como esperado")
-        else:
-            print("\n❌ Se esperaba un error pero no se capturó")
+        print("\n❌ Se esperaba un error pero no se capturó")
             
+    except FileNotFoundError as e:
+        print(f"  ✅ FileNotFoundError capturado correctamente:")
+        print(f"     {e}")
+        print("\n✅ Error handling funcionó como esperado")
     except Exception as e:
         print(f"\n✅ Excepción capturada correctamente: {e}")
 
@@ -116,7 +139,7 @@ if __name__ == "__main__":
     print("""
 ╔════════════════════════════════════════════════════════════╗
 ║  ETL Multi-Agent System - Hexagonal Architecture Demo     ║
-║  Arquitectura: Ports & Adapters + CrewAI                  ║
+║  Arquitectura: Ports & Adapters (Use Cases + Adapters)    ║
 ╚════════════════════════════════════════════════════════════╝
     """)
     

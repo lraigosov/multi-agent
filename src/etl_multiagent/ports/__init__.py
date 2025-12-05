@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Protocol, Any
 
-from .entities import DataSource, DataBatch, TransformationJob, DataDestination
+from ..domain.entities import DataSource, DataBatch, TransformationJob, DataDestination
 
 
 class SourcePort(Protocol):
