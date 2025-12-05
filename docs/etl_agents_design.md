@@ -1,4 +1,8 @@
-# Diseño Detallado de Agentes ETL
+# Diseño Detallado de Agentes ETL (Arquitectura Propuesta)
+
+⚠️ **Nota**: Este documento describe la arquitectura **propuesta** de agentes multi-agente con CrewAI. La implementación actual del MVP utiliza **casos de uso directos** sin orquestación de agentes LLM.
+
+La integración con CrewAI está disponible en `src/etl_multiagent/crews/etl_orchestration_crew.py` con 5 agentes básicos y puede ampliarse con los agentes adicionales descritos aquí.
 
 ## 1. Orchestrator / Workflow Agent
 

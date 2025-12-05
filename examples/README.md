@@ -1,6 +1,10 @@
-# Ejemplos de Uso - Marketing Multi-Agent System
+# Ejemplos de Uso - Dominio Marketing Multi-Agent
 
 Esta carpeta contiene ejemplos prácticos que demuestran cómo usar el sistema de marketing multi-agente en diferentes escenarios reales.
+
+## 📝 Nota sobre ETL
+
+Para ejemplos del dominio **ETL**, ver: `examples/demo_etl.py` (demostración funcional de pipeline ETL sin LLMs)
 
 ## 📁 Ejemplos Disponibles
 

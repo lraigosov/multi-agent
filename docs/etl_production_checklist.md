@@ -1,6 +1,10 @@
 # Checklist de Producción - ETL Multi-Agente
 
-Lista de verificación para llevar el sistema ETL multi-agente de prototipo a entorno productivo.
+**Estado del Proyecto**: MVP con arquitectura hexagonal funcional y demostración operativa.
+- ✅ Use cases implementados y testeados
+- ✅ Adaptadores básicos (archivos) funcionales
+- ⏳ Adaptadores cloud/DB: stubs, requieren implementación
+- ⏳ Integración completa con CrewAI: disponible pero no usado en MVP
 
 ---
 
@@ -8,90 +12,74 @@ Lista de verificación para llevar el sistema ETL multi-agente de prototipo a en
 
 ### ✅ 1. Testing y Validación
 
-#### Tests Unitarios
+### ✅ 1. Testing y Validación
+
+#### Tests Unitarios (Pendiente)
 - [ ] Tests de entidades de dominio (`DataSource`, `DataBatch`, `TransformationJob`, `DataDestination`)
 - [ ] Tests de casos de uso (`IngestData`, `TransformData`, `LoadData`, `ReconcileJobResult`)
 - [ ] Mocks de puertos para tests aislados
 - [ ] Coverage mínimo: 80% en domain layer
 
-#### Tests de Integración
+#### Tests de Integración (Pendiente)
 - [ ] Tests de adaptadores reales (FileSourceAdapter, FileDestinationAdapter)
 - [ ] Tests de flows completos (ETLPipelineFlow end-to-end)
-- [ ] Tests de crews con agentes reales (ETLOrchestrationCrew)
 - [ ] Tests de error handling y retry logic
 
-#### Tests de Carga
+#### Tests de Carga (Futuro - v1.0)
 - [ ] Benchmark con datasets de diferentes tamaños (1MB, 100MB, 1GB)
 - [ ] Pruebas de concurrencia (múltiples pipelines simultáneos)
-- [ ] Pruebas de latencia de LLMs bajo carga
-- [ ] Identificar límites y cuellos de botella
 
-#### Tests de Calidad de Datos
+#### Tests de Calidad de Datos (Futuro - v0.2)
 - [ ] Validar transformaciones con datasets reales
 - [ ] Comparar outputs con transformaciones manuales (golden datasets)
-- [ ] Tests de detección de alucinaciones (datos inventados por LLM)
 - [ ] Validar reglas de calidad con casos edge
 
 ---
 
 ### ✅ 2. Observabilidad
 
-#### Logging
+#### Logging (Futuro - v1.0)
 - [ ] Implementar logging estructurado (JSON) en todos los componentes
 - [ ] Niveles de log configurables (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-- [ ] Logs rotativos con retención configurable (logrotate)
+- [ ] Logs rotativos con retención configurable
 - [ ] No loggear datos sensibles ni credenciales
-- [ ] Logging de prompts y responses de LLMs (sanitizados)
 
-#### Métricas
+#### Métricas (Futuro - v1.0)
 - [ ] Instrumentar con métricas de negocio:
   - Pipelines ejecutados/hora
   - Tasa de éxito/fallo
   - Latencia promedio por step
   - Rows procesados/segundo
-  - Costo acumulado de LLMs
-- [ ] Integrar con Prometheus o Datadog
-- [ ] Dashboards de monitoreo en Grafana
+- [ ] Integrar con Prometheus o herramienta similar
 
-#### Tracing
+#### Tracing (Futuro - v2.0)
 - [ ] Implementar tracing distribuido con OpenTelemetry
 - [ ] Trace IDs únicos por pipeline execution
-- [ ] Correlación de logs, métricas y traces
-- [ ] Integrar con Jaeger o Zipkin para visualización
 
-#### Alertas
+#### Alertas (Futuro - v1.0)
 - [ ] Alertas de fallos críticos (pipeline crash, datos corruptos)
-- [ ] Alertas de latencia alta (>threshold)
-- [ ] Alertas de costos elevados de LLMs
-- [ ] Alertas de drift en calidad de datos
-- [ ] Integrar con PagerDuty, Slack, o email
+- [ ] Alertas de latencia alta
 
 ---
 
-### ✅ 3. Seguridad
+### ✅ 3. Seguridad (MVP - Nivel Básico)
 
-#### Credenciales y Secrets
-- [ ] Migrar de `.env` a secret manager (AWS Secrets Manager, Azure Key Vault, Vault)
+#### Credenciales y Secrets (Futuro - v1.0)
+- [ ] Migrar de `.env` a secret manager (AWS Secrets Manager, Azure Key Vault)
 - [ ] Rotar credenciales regularmente (cada 90 días)
-- [ ] No commitear secrets en git (verificar con git-secrets, trufflehog)
-- [ ] Encriptar secrets en reposo
+- [ ] No commitear secrets en git
 
-#### Autenticación y Autorización
+#### Autenticación y Autorización (Futuro - v1.0)
 - [ ] Implementar RBAC (Role-Based Access Control)
-- [ ] Integrar con identity provider (OAuth, SAML, LDAP)
 - [ ] Audit logs de accesos y cambios
-- [ ] Tokens con expiración automática
 
-#### Encriptación
-- [ ] TLS/SSL para comunicaciones (API, DBs, cloud storage)
-- [ ] Encriptar datos sensibles en reposo (PII, PCI)
-- [ ] Encriptar backups y snapshots
+#### Encriptación (Futuro - v1.0)
+- [ ] TLS/SSL para comunicaciones
+- [ ] Encriptar datos sensibles en reposo (PII)
 
-#### Compliance
-- [ ] Verificar cumplimiento GDPR (si aplica)
-- [ ] Verificar cumplimiento HIPAA (si datos de salud)
+#### Compliance (Futuro - v2.0)
+- [ ] Verificar cumplimiento regulatorio según industria
 - [ ] Implementar data retention policies
-- [ ] Right to deletion (GDPR Article 17)
 
 ---
 

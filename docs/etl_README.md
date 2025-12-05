@@ -5,13 +5,18 @@ Sistema ETL multi-agente construido con **arquitectura hexagonal** (Ports & Adap
 ## 🎯 Características
 
 - **Arquitectura Hexagonal**: Dominio desacoplado de frameworks e infraestructura
-- **Multi-Agente CrewAI**: 5-7 agentes especializados (orchestrator, source, transform, validation, loader, observer)
 - **Puertos y Adaptadores**: Interfaces claras para sources, transformations, validations, destinations
-- **Multi-LLM**: Soporte para OpenAI, Gemini, Anthropic (configurable por agente)
-- **Autocorrección**: Mecanismos de retry, validación cruzada y aprendizaje de patrones
-- **Extensible**: Fácil adición de nuevos sources/destinations sin tocar el dominio
+- **Casos de Uso Funcionales**: Ingestión, transformación, validación y carga de datos
+- **Validación Integrada**: Checks de nulls, duplicados y tipos de datos
+- **Extensible**: Fácil adición de nuevos adaptadores sin modificar dominio
+- **Preparado para CrewAI** (v0.2+): Arquitectura lista para integración con agentes multi-LLM
 
-## 📋 Casos de Uso
+## 📋 Casos de Uso (Actuales)
+
+1. **Transformación Local**: CSV → CSV con mapeo de columnas y type casting
+2. **Validación de Calidad**: Detección de nulos y duplicados
+
+## 🔮 Casos de Uso (Futuros - v0.2+)
 
 1. **Migración de Datos**: CSV → Parquet con limpieza y normalización
 2. **Data Warehousing**: Archivos locales → BigQuery con validación de calidad
@@ -24,7 +29,7 @@ Sistema ETL multi-agente construido con **arquitectura hexagonal** (Ports & Adap
 CLI/Scripts (Driving Adapters)
          │
          ▼
-   ETL Flow/Crew (Application)
+   Use Cases + Adapters (Application Layer)
          │
          ▼
 Domain (Entities + Use Cases + Ports)
@@ -32,6 +37,8 @@ Domain (Entities + Use Cases + Ports)
          ▼
 Adapters (Files, DBs, Cloud, Driven)
 ```
+
+**Nota**: La implementación actual utiliza casos de uso directamente. CrewAI Crew y Flow están definidos pero son opcionales para futuras extensiones.
 
 Ver [Diagrama Detallado](../docs/etl_architecture.md)
 
@@ -76,28 +83,20 @@ ETL_LOG_LEVEL=INFO
 
 ## 🎮 Uso
 
-### CLI Global
+### Demo Funcional
 
 ```bash
-# Listar dominios
-python cli.py domains
-
-# Ver crews ETL
-python cli.py crews --domain etl
-
-# Ver flows ETL
-python cli.py flows --domain etl
-
-# Ejecutar flow ETL
-python cli.py run-flow --domain etl --flow ETLPipelineFlow \
-  --state '{"source_uri":"data/input.csv","source_format":"csv","dest_uri":"outputs/output.csv","dest_format":"csv","mappings":{"id":"employee_id"},"target_schema":{"employee_id":"int64"}}'
+# Demo con caso de éxito y manejo de errores
+python examples/demo_etl.py
 ```
 
-### Script de Ejemplo
+**Salida esperada:**
+- Ingesta de datos desde CSV
+- Transformación de columnas (mapeo y type casting)
+- Validación de calidad de datos
+- Carga a archivo CSV destino en `outputs/`
 
-```bash
-# Demo con caso de éxito y fallo controlado
-python examples/demo_etl.py
+**Nota**: La demo ejecuta el pipeline ETL completo sin dependencias de LLMs ni CrewAI Crew/Flow.
 ```
 
 ### Uso Programático

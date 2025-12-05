@@ -1,5 +1,10 @@
-# ETL Agents Configuration
-# Specialized agents for data pipeline orchestration
+# ETL Agents Configuration (Propuesta de Arquitectura)
+# Definición de agentes especializados para orquestación multi-agente.
+# 
+# NOTA: El MVP actual (v0.1) NO usa CrewAI agents. Esta configuración
+# está lista para versiones futuras (v0.2+) cuando se integre orquestación
+# de agentes con LLMs. Actualmente, el demo_etl.py ejecuta use cases
+# directamente sin LLMs.
 
 orchestrator_agent:
   role: >

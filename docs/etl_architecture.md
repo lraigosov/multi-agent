@@ -1,5 +1,7 @@
 # Arquitectura Hexagonal - Dominio ETL Multi-Agente
 
+**Estado Actual**: MVP con casos de uso funcionales. CrewAI Flow y Crew están disponibles como extensión opcional.
+
 ## Diagrama Textual (Pseudo-C4)
 
 ```
@@ -16,13 +18,18 @@
 ┌─────────────────────────────────────────────────────────────────┐
 │              CAPA DE ORQUESTACIÓN (Application)                  │
 ├─────────────────────────────────────────────────────────────────┤
-│  • ETLPipelineFlow (CrewAI Flow)                                │
+│  • ETLPipelineFlow (CrewAI Flow - Disponible pero no usado)     │
 │    - ingest_source → transform_data → validate_quality →        │
 │      load_destination                                           │
 │                                                                  │
-│  • ETLOrchestrationCrew (CrewAI Crew)                           │
+│  • ETLOrchestrationCrew (CrewAI Crew - 5 agentes básicos)       │
 │    - orchestrator_agent, source_agent, transform_agent,         │
 │      validation_agent, loader_agent                             │
+│                                                                  │
+│  ✅ IMPLEMENTACIÓN ACTUAL (Demo):                               │
+│    - Ejecución directa de Use Cases sin LLMs                    │
+│    - FileSourceAdapter → PandasTransformAdapter →               │
+│      ValidationAdapter → FileDestinationAdapter                 │
 └────────────────────────┬────────────────────────────────────────┘
                          │
                          │ usa
@@ -81,18 +88,19 @@
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-## Flujo de Datos
+## Flujo de Datos (Implementación Actual)
 
-1. **Usuario** → CLI/Script invoca ETLPipelineFlow con parámetros
-2. **Flow** → Crea entidades de dominio (DataSource, TransformationJob, etc.)
-3. **Use Case (IngestData)** → Llama SourcePort.read() vía adaptador
-4. **Adaptador (FileSourceAdapter)** → Lee archivo y retorna DataBatch
-5. **Use Case (TransformData)** → Llama TransformPort.apply() con job
-6. **Adaptador (PandasTransformAdapter)** → Aplica mappings y retorna DataBatch transformado
-7. **Use Case (ReconcileJobResult)** → Llama ValidationPort.validate()
-8. **Adaptador (ValidationAdapter)** → Ejecuta checks y retorna reporte
-9. **Use Case (LoadData)** → Llama DestinationPort.write()
-10. **Adaptador (FileDestinationAdapter)** → Escribe archivo y retorna confirmación
+1. **Usuario** → Script Python (`demo_etl.py`) con parámetros
+2. **Use Case (IngestData)** → Llama SourcePort.read() vía adaptador
+3. **Adaptador (FileSourceAdapter)** → Lee archivo y retorna DataBatch
+4. **Use Case (TransformData)** → Llama TransformPort.apply() con job
+5. **Adaptador (PandasTransformAdapter)** → Aplica mappings y retorna DataBatch transformado
+6. **Use Case (ReconcileJobResult)** → Llama ValidationPort.validate()
+7. **Adaptador (ValidationAdapter)** → Ejecuta checks y retorna reporte
+8. **Use Case (LoadData)** → Llama DestinationPort.write()
+9. **Adaptador (FileDestinationAdapter)** → Escribe archivo y retorna confirmación
+
+**Nota**: Esta implementación es síncrona, lineal y sin dependencias de LLMs. Ideal para pipelines determinísticos.
 
 ## Principios Hexagonales Aplicados
 

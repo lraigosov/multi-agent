@@ -1,207 +1,166 @@
 # Riesgos Técnicos y Mitigaciones - ETL Multi-Agente
 
-## 🚨 Riesgos del MVP
+# Riesgos Técnicos y Mitigaciones - ETL Multi-Agente
+
+**Estado**: MVP actual sin orquestación de LLMs. Algunos riesgos no aplican (costos de LLMs, alucinaciones) hasta integración completa con CrewAI.
+
+## 🚨 Riesgos del MVP Actual
 
 ### 1. Calidad de Datos
 
-**Riesgo**: Los LLMs pueden generar transformaciones incorrectas o no detectar problemas de calidad sutiles.
+**Riesgo (MVP)**: Sin intervención de LLMs, el riesgo se limita a bugs en transformadores pandas o reglas de validación incompletas.
 
-**Impacto**: Alto - Datos corruptos en destino, decisiones de negocio erróneas.
+**Impacto**: Medio - Posibles datos corruptos si mappings son incorrectos.
 
-**Mitigaciones**:
-- ✅ Implementar `ValidationPort` con checks explícitos (nulls, duplicates, types, ranges)
-- ✅ Agregar `Observer Agent` que revisa decisiones del `Transform Agent`
-- 🔄 Implementar "human-in-the-loop" para validación manual de transformaciones críticas
-- 🔄 Registrar todos los cambios de datos para auditoría y rollback
+**Mitigaciones Actuales**:
+- ✅ Implementar `ValidationPort` con checks explícitos (nulls, duplicates, types)
+- ✅ Usar validaciones simples y predecibles (sin LLM)
+- 🔄 Agregar tests unitarios de transformadores
 
-**Versión Futura (v2)**:
+**Mitigaciones Futuras (con CrewAI)**:
 - Integrar frameworks de testing de datos (Great Expectations, dbt tests)
 - Implementar alertas automáticas cuando métricas de calidad caen bajo umbrales
-- Crear dashboard de observabilidad con Grafana/Datadog
 
 ---
 
 ### 2. Performance y Latencia
 
-**Riesgo**: Múltiples llamadas a LLMs (orchestrator, source, transform, validation, loader) incrementan latencia significativamente.
+**Riesgo (MVP)**: Ejecución síncrona sin paralelización. Datasets muy grandes pueden ralentizar el pipeline.
 
-**Impacto**: Medio-Alto - Pipelines lentos, costos elevados, timeouts.
+**Impacto**: Bajo-Medio (MVP). Alto cuando se integre con LLMs (v0.2+).
 
-**Mitigaciones**:
-- ✅ Usar modelos rápidos (Gemini Flash) para tareas operativas
-- ✅ Cachear decisiones repetidas (mismo tipo de fuente/destino)
-- 🔄 Implementar procesamiento asíncrono con queues (Celery, RabbitMQ)
-- 🔄 Paralelizar agentes independientes (source profiling y schema inference)
+**Mitigaciones Actuales**:
+- ✅ Ejecución de use cases síncrona pero eficiente
+- 🔄 Agregar tests de performance con datasets de diferentes tamaños
 
-**Versión Futura (v2)**:
-- Compilar transformaciones recurrentes en código optimizado (sin LLM)
-- Implementar "fast path" para pipelines conocidos (skip orchestration)
-- Usar streaming para datasets grandes (procesar por chunks)
+**Mitigaciones Futuras (con CrewAI)**:
+- Implementar procesamiento asíncrono
+- Usar streaming para datasets grandes
 
 ---
 
 ### 3. Costos de LLMs
 
-**Riesgo**: Pipelines ETL frecuentes con múltiples agentes generan costos significativos en llamadas API.
+**Riesgo (MVP)**: NO APLICA - El MVP no usa LLMs.
 
-**Impacto**: Alto - Presupuesto insostenible, ROI negativo.
+**Impacto**: Cero en MVP.
 
-**Mitigaciones**:
-- ✅ Usar Gemini Flash (gratuito) para la mayoría de tareas
-- ✅ Configurar modelos por agente (GPT-3.5 para loader, GPT-4o para orchestrator)
-- 🔄 Implementar rate limiting y quotas por usuario/equipo
-- 🔄 Cachear resultados de LLM para requests idénticos
-
-**Versión Futura (v2)**:
-- Fine-tuning de modelos locales (Llama 3, Mistral) para tareas específicas
-- Implementar "LLM budget dashboard" con alertas
-- Usar modelos más pequeños (GPT-3.5, Gemini Nano) para tareas simples
+**Mitigaciones Futuras (con CrewAI)**:
+- Usar modelos rápidos y económicos (Gemini Flash)
+- Implementar rate limiting y quotas
+- Cachear decisiones repetidas
 
 ---
 
 ### 4. Seguridad y Credenciales
 
-**Riesgo**: Credenciales de bases de datos, APIs y cloud storage expuestas en logs, errores o prompts.
+**Riesgo (MVP)**: Credenciales en `.env` sin encriptación. No hay exposición de LLM prompts (no hay LLMs).
 
-**Impacto**: Crítico - Breach de seguridad, pérdida de datos, cumplimiento regulatorio.
+**Impacto**: Bajo-Medio (en desarrollo). Requiere migración antes de producción.
 
-**Mitigaciones**:
-- ✅ Usar variables de entorno (`.env`) para secrets
-- ✅ No loggear credenciales ni datos sensibles
-- 🔄 Integrar con secret managers (AWS Secrets Manager, Azure Key Vault, HashiCorp Vault)
-- 🔄 Implementar RBAC (Role-Based Access Control) para acceso a sources/destinations
+**Mitigaciones Actuales**:
+- ✅ Usar variables de entorno (`.env`) - solo para desarrollo
+- ✅ No loggear credenciales en código
 
-**Versión Futura (v2)**:
-- Encriptación end-to-end de datos en tránsito y reposo
-- Auditoría completa de accesos con logs inmutables
-- Integración con identity providers (OAuth, SAML)
+**Mitigaciones Futuras (v1.0 - Producción)**:
+- Migrar a secret managers (AWS Secrets Manager, Azure Key Vault)
+- Implementar RBAC
+- Encriptación de datos en tránsito
 
 ---
 
 ### 5. Observabilidad y Debugging
 
-**Riesgo**: Los agentes toman decisiones opacas (reasoning interno del LLM), difícil rastrear por qué falló un pipeline.
+**Riesgo (MVP)**: Logs básicos. Sin tracing distribuido ni dashboard centralizado.
 
-**Impacto**: Medio-Alto - Debugging lento, incidentes sin resolver, pérdida de confianza.
+**Impacto**: Bajo (MVP). Requiere inversión para producción.
 
-**Mitigaciones**:
-- ✅ Logging estructurado (JSON) de cada step del flow
-- ✅ Guardar prompts, responses y decisiones de agentes en logs
-- 🔄 Implementar tracing distribuido (OpenTelemetry, Jaeger)
-- 🔄 Dashboard de ejecuciones con métricas de éxito/fallo
+**Mitigaciones Actuales**:
+- ✅ Logging básico en console
+- 🔄 Agregar logging estructurado en adapter calls
 
-**Versión Futura (v2)**:
-- Integrar con Datadog, New Relic, o Prometheus + Grafana
-- Implementar "explain mode" donde cada agente justifica sus decisiones
-- Crear alertas proactivas para fallos recurrentes
+**Mitigaciones Futuras (v1.0 - Producción)**:
+- Implementar logging estructurado (JSON)
+- Integrar con herramientas de monitoreo (Prometheus, Datadog)
 
 ---
 
 ### 6. Alucinaciones y Drift
 
-**Riesgo**: Los LLMs pueden "alucinar" transformaciones, mappings o validaciones que no existen en los datos reales.
+**Riesgo (MVP)**: NO APLICA - Sin orquestación de LLMs.
 
-**Impacto**: Alto - Datos incorrectos, pipelines rotos, confianza perdida.
+**Impacto**: Cero en MVP.
 
-**Mitigaciones**:
-- ✅ Validar todas las transformaciones con checks explícitos (ValidationPort)
-- ✅ Implementar "dry-run mode" que muestra transformaciones sin aplicarlas
-- 🔄 Usar few-shot prompting con ejemplos reales de transformaciones exitosas
-- 🔄 Implementar "guardrails" que bloqueen transformaciones fuera de rango
-
-**Versión Futura (v2)**:
-- Integrar con frameworks de detección de drift (Evidently AI, WhyLabs)
-- Implementar "shadow mode" que ejecuta transformaciones nuevas sin afectar producción
-- Crear feedback loop donde usuarios validan transformaciones y mejoran prompts
+**Mitigaciones Futuras (con CrewAI)**:
+- Validación explícita de transformaciones
+- "Dry-run mode" antes de aplicar cambios
+- Detección de drift con herramientas especializadas
 
 ---
 
 ### 7. Escalabilidad
 
-**Riesgo**: El MVP procesa un archivo/fuente a la vez, no soporta paralelización ni datasets masivos (TB+).
+**Riesgo (MVP)**: Procesamiento secuencial, un archivo a la vez. Datasets muy grandes pueden tomar tiempo.
 
-**Impacto**: Medio - Limitación de adopción en empresas grandes, cuellos de botella.
+**Impacto**: Bajo-Medio - Limitación conocida, aceptable para MVP.
 
-**Mitigaciones**:
-- ✅ Diseño hexagonal permite escalar horizontalmente (múltiples workers)
-- 🔄 Implementar queue-based orchestration (Celery, Kafka)
-- 🔄 Usar frameworks distribuidos (Spark, Dask) para datasets grandes
+**Mitigaciones Actuales**:
+- ✅ Diseño hexagonal permite escalar horizontalmente en futuro
+- 🔄 Tests de performance con datasets de diferentes tamaños
 
-**Versión Futura (v2)**:
-- Soporte para procesamiento distribuido (Spark on Kubernetes)
-- Particionamiento automático de datasets grandes
-- Streaming ETL con Apache Flink o Kafka Streams
+**Mitigaciones Futuras (v1.0+)**:
+- Implementar procesamiento asíncrono
+- Usar frameworks distribuidos (Spark, Dask) para datasets muy grandes
 
 ---
 
 ### 8. Gestión de Estado y Reintentos
 
-**Riesgo**: Si un pipeline falla a mitad de ejecución (ej. después de ingest pero antes de load), se pierde el trabajo parcial.
+**Riesgo (MVP)**: Estado solo en memoria. Si falla, se pierde el trabajo parcial.
 
-**Impacto**: Medio - Re-ejecuciones costosas, frustración de usuarios.
+**Impacto**: Bajo (MVP). Aceptable porque los datos source no se corrompen, solo se reinicia.
 
-**Mitigaciones**:
-- ✅ Flow state persiste en memoria durante ejecución
-- 🔄 Persistir estado en base de datos (Postgres, Redis) después de cada step
-- 🔄 Implementar retry con checkpointing (reanudar desde último step exitoso)
+**Mitigaciones Actuales**:
+- ✅ Manejo básico de excepciones con try-catch
+- 🔄 Logs de errores
 
-**Versión Futura (v2)**:
-- Implementar WAL (Write-Ahead Log) para recovery
-- Soporte para transacciones ACID en pipelines críticos
-- Integración con workflow engines (Airflow, Prefect) para orchestration avanzada
-
----
-
-## 📊 Matriz de Riesgos
-
-| Riesgo | Probabilidad | Impacto | Prioridad | Mitigación MVP | Mitigación v2 |
-|--------|--------------|---------|-----------|----------------|---------------|
-| Calidad de Datos | Alta | Alto | 🔴 Crítico | ValidationPort + Observer Agent | Great Expectations |
-| Performance | Media | Alto | 🟠 Alto | Modelos rápidos + cache | Async + streaming |
-| Costos LLM | Alta | Alto | 🟠 Alto | Gemini Flash + config por agente | Fine-tuning local |
-| Seguridad | Baja | Crítico | 🔴 Crítico | .env + no logging secrets | Secret managers + RBAC |
-| Observabilidad | Alta | Medio | 🟡 Medio | Logging estructurado | OpenTelemetry + dashboards |
-| Alucinaciones | Media | Alto | 🟠 Alto | Dry-run + validación | Guardrails + drift detection |
-| Escalabilidad | Media | Medio | 🟡 Medio | Diseño hexagonal | Spark + Kubernetes |
-| Estado/Reintentos | Media | Medio | 🟡 Medio | Flow state en memoria | Checkpointing + WAL |
+**Mitigaciones Futuras (v1.0+)**:
+- Persistir estado en base de datos entre steps
+- Implementar retry con checkpointing
+- Integración con Airflow/Prefect para orchestration avanzada
 
 ---
 
-## 🛡️ Principios de Hardening
+## 📊 Matriz de Riesgos (MVP)
 
-1. **Defense in Depth**: Múltiples capas de validación (agent, adapter, destination)
-2. **Fail-Safe Defaults**: Pipelines fallan de forma segura sin corromper datos
-3. **Least Privilege**: Agentes solo tienen acceso a recursos necesarios
-4. **Auditability**: Todas las acciones son loggeadas y trazables
-5. **Graceful Degradation**: Sistema sigue funcionando con capacidades reducidas si un agente falla
+| Riesgo | Probabilidad | Impacto | Estado |
+|--------|--------------|---------|--------|
+| Calidad de Datos | Baja | Medio | ✅ Mitigado (ValidationPort) |
+| Performance | Baja | Bajo | ✅ Aceptable (single-threaded) |
+| Costos LLM | N/A | N/A | N/A (sin LLMs) |
+| Seguridad | Media | Medio | ⚠️ Aceptable para dev, requiere hardening para prod |
+| Observabilidad | Media | Bajo | ⚠️ Básica, mejorar en v1.0 |
+| Alucinaciones | N/A | N/A | N/A (sin LLMs) |
+| Escalabilidad | Baja | Bajo | ✅ Limitada pero diseño permite escalar |
+| Estado/Reintentos | Media | Bajo | ⚠️ Aceptable para MVP |
 
----
+## 🚀 Roadmap de Mitigaciones Futuras
 
-## 🚀 Roadmap de Mitigaciones
+### v0.2 (Hardening) - Próximo
+- [ ] Más adaptadores (S3, Postgres, BigQuery)
+- [ ] Tests de integración
+- [ ] Logging estructurado
+- [ ] Dashboard básico
 
-### v0.1 (MVP) - ✅ Completado
-- [x] ValidationPort con checks básicos
-- [x] Logging estructurado
-- [x] .env para secrets
-- [x] Dry-run mode (manual en demo)
-
-### v0.2 (Hardening) - 🔄 En Progreso
-- [ ] Observer Agent con autocorrección
-- [ ] Cache de decisiones LLM
-- [ ] Retry con exponential backoff
-- [ ] Dashboard básico de ejecuciones
-
-### v1.0 (Producción)
-- [ ] Great Expectations integration
-- [ ] OpenTelemetry + tracing
-- [ ] Secret managers (AWS/Azure/Vault)
+### v1.0 (Producción-Ready)
+- [ ] Secret managers (AWS/Azure)
 - [ ] RBAC y autenticación
-- [ ] Async orchestration con Celery
-- [ ] Drift detection
+- [ ] OpenTelemetry + tracing
+- [ ] Integración con Great Expectations
+- [ ] Async orchestration
 
-### v2.0 (Enterprise)
+### v2.0 (Enterprise - Futuro lejano)
 - [ ] Spark/Dask para datasets grandes
 - [ ] Fine-tuning de modelos locales
-- [ ] WAL y checkpointing
-- [ ] Multi-tenant con quotas
-- [ ] SLA monitoring y alertas
+- [ ] SLA monitoring
+- [ ] Multi-tenant
