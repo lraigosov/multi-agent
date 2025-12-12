@@ -348,8 +348,8 @@ def status():
     env_vars = ["OPENAI_API_KEY", "SERPER_API_KEY"]
     for var in env_vars:
         value = os.getenv(var)
-        if value and len(value) > 10:
-            status_table.add_row(var, "✅ Configurado", f"{value[:10]}...")
+        if value:
+            status_table.add_row(var, "✅ Configurado", "(hidden)")
         else:
             status_table.add_row(var, "❌ Faltante", "No configurado")
     
