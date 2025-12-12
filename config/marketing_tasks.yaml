@@ -1,0 +1,452 @@
+# Definición de Tareas para Marketing Digital Multi-Agente
+# ======================================================
+
+# TAREAS DEL INVESTIGADOR DE MERCADO
+# -----------------------------------
+
+market_research_task:
+  description: >
+    Realizar un análisis exhaustivo del mercado {industry} enfocándose en:
+    1. Tamaño del mercado y proyecciones de crecimiento
+    2. Tendencias actuales y emergentes en la industria
+    3. Comportamiento y preferencias del {target_audience}
+    4. Factores estacionales y cíclicos que afectan el mercado
+    5. Oportunidades y amenazas del macroentorno
+    
+    Utiliza fuentes confiables, estudios de mercado recientes y herramientas 
+    de análisis de tendencias. El año actual es 2025.
+  expected_output: >
+    Un reporte detallado de investigación de mercado en formato markdown que incluya:
+    - Executive summary con los hallazgos más importantes
+    - Análisis del tamaño y crecimiento del mercado con datos cuantitativos
+    - 5-7 tendencias clave identificadas con ejemplos específicos
+    - Perfil detallado del target audience con demographics y psychographics
+    - Lista de oportunidades de mercado priorizadas
+    - Recomendaciones iniciales para la estrategia de marketing
+  agent: market_researcher
+
+audience_research_task:
+  description: >
+    Profundizar en el análisis del {target_audience} para entender:
+    1. Demographics detallados (edad, género, ubicación, ingresos)
+    2. Psychographics (valores, intereses, estilo de vida)
+    3. Comportamiento de compra y decision journey
+    4. Canales de comunicación preferidos
+    5. Pain points y necesidades no satisfechas
+    6. Influenciadores y referencias que siguen
+    
+    Asegúrate de incluir insights específicos para {industry}.
+  expected_output: >
+    Un buyer persona detallado y documento de insights de audiencia que contenga:
+    - 2-3 buyer personas completos con nombres, fotos y descripción narrativa
+    - Mapa del customer journey con touchpoints clave
+    - Análisis de canales de comunicación con % de preferencia
+    - Lista priorizada de pain points con nivel de intensidad
+    - Recomendaciones para messaging y posicionamiento
+  agent: market_researcher
+
+# TAREAS DEL ANALISTA DE COMPETENCIA
+# ----------------------------------
+
+competitive_analysis_task:
+  description: >
+    Realizar un análisis competitivo integral en {industry} que incluya:
+    1. Identificación de competidores directos, indirectos y emergentes
+    2. Análisis de posicionamiento y propuesta de valor de cada competidor
+    3. Evaluación de sus estrategias de marketing y canales utilizados
+    4. Análisis de fortalezas y debilidades competitivas
+    5. Benchmarking de precios y modelos de negocio
+    6. Identificación de gaps y oportunidades de diferenciación
+    
+    Enfócate en competidores relevantes para el {target_audience}.
+  expected_output: >
+    Un análisis competitivo completo que incluya:
+    - Matriz competitiva con 5-8 competidores principales
+    - Análisis SWOT detallado de top 3 competidores
+    - Benchmarking de estrategias de marketing con ejemplos específicos
+    - Mapa de posicionamiento competitivo
+    - Lista de gaps del mercado con nivel de oportunidad
+    - Recomendaciones estratégicas para diferenciación
+  agent: competitor_analyst
+
+competitor_content_analysis_task:
+  description: >
+    Analizar las estrategias de contenido y comunicación de los principales 
+    competidores en {industry}:
+    1. Audit de contenido en website, blog y recursos
+    2. Análisis de presencia en redes sociales y engagement
+    3. Evaluación de tone of voice y messaging
+    4. Identificación de temas y keywords que utilizan
+    5. Performance de su contenido (shares, comentarios, backlinks)
+    6. Gaps en su estrategia de contenido
+  expected_output: >
+    Un reporte de análisis de contenido competitivo con:
+    - Audit matriz de contenido por competidor y canal
+    - Análisis comparativo de tone of voice y messaging
+    - Lista de temas/keywords exitosos de la competencia
+    - Identificación de gaps de contenido no explotados
+    - Recomendaciones de oportunidades de contenido único
+  agent: competitor_analyst
+
+# TAREAS DEL ESTRATEGA DE MARKETING
+# ---------------------------------
+
+marketing_strategy_task:
+  description: >
+    Desarrollar una estrategia integral de marketing digital basada en la 
+    investigación de mercado y análisis competitivo para lograr {marketing_objectives}:
+    1. Definir posicionamiento único y propuesta de valor
+    2. Establecer objetivos SMART y KPIs principales
+    3. Seleccionar canales de marketing más efectivos
+    4. Crear estrategia de messaging por segmento de audiencia
+    5. Desarrollar marketing mix y allocation de presupuesto
+    6. Crear roadmap de implementación con timeline
+    
+    La estrategia debe ser específica para {industry} y {target_audience}.
+  expected_output: >
+    Un documento estratégico completo que incluya:
+    - Posicionamiento único y propuesta de valor diferenciada
+    - Objetivos SMART con métricas específicas y timeline
+    - Estrategia de canales con justificación de selección
+    - Messaging framework adaptado por audiencia
+    - Presupuesto recomendado por canal/actividad
+    - Roadmap de implementación de 6-12 meses
+    - Plan de medición y optimización
+  agent: marketing_strategist
+
+brand_positioning_task:
+  description: >
+    Desarrollar el posicionamiento de marca y messaging estratégico:
+    1. Definir brand promise y unique selling proposition
+    2. Crear brand personality y tone of voice guidelines
+    3. Desarrollar key messages por audiencia y situación
+    4. Establecer brand architecture y jerarquía de mensajes
+    5. Crear guidelines para aplicación consistente
+    6. Validar posicionamiento vs. competencia
+    
+    Debe ser relevante para {target_audience} en {industry}.
+  expected_output: >
+    Un brand book estratégico que contenga:
+    - Brand promise y USP claramente definidos
+    - Brand personality con ejemplos de aplicación
+    - Tone of voice guide con do's y don'ts
+    - Messaging hierarchy y key messages por contexto
+    - Brand positioning statement y taglines opcionales
+    - Guidelines de aplicación en diferentes canales
+  agent: marketing_strategist
+
+# TAREAS DEL CREADOR DE CONTENIDO
+# -------------------------------
+
+content_strategy_task:
+  description: >
+    Crear una estrategia integral de contenido que apoye los objetivos de 
+    marketing y resuene con {target_audience}:
+    1. Desarrollar content pillars y temas principales
+    2. Crear content mix por tipo y formato
+    3. Planificar contenido por customer journey stage
+    4. Establecer calendario editorial y frecuencia
+    5. Definir content guidelines y quality standards
+    6. Crear sistema de content repurposing
+    
+    Alinear con la investigación previa de audiencia y competencia.
+  expected_output: >
+    Una estrategia de contenido completa que incluya:
+    - 4-6 content pillars con subtemas y angles
+    - Content mix recomendado (% por tipo/formato)
+    - Contenido mapeado por customer journey
+    - Calendario editorial template para 3 meses
+    - Content guidelines y brand voice aplicado
+    - Plan de repurposing y cross-channel distribution
+  agent: content_creator
+
+content_calendar_task:
+  description: >
+    Desarrollar un calendario de contenido detallado para los próximos 3 meses:
+    1. Planificar contenido por semana y canal
+    2. Incluir variety de formatos (blog, social, video, email, etc.)
+    3. Alinear con eventos relevantes y estacionalidad
+    4. Balancear contenido educativo, promocional y de engagement
+    5. Incluir content prompts y brief para cada pieza
+    6. Considerar recursos y timeline de producción
+    
+    Debe reflejar los insights de audiencia y objetivos de {marketing_objectives}.
+  expected_output: >
+    Un calendario editorial detallado que contenga:
+    - Planning calendar de 12 semanas con fechas específicas
+    - Content brief para cada pieza planificada
+    - Distribution plan por canal y formato
+    - Resource requirements y ownership asignado
+    - Performance tracking plan con métricas por contenido
+    - Template replicable para siguientes trimestres
+  agent: content_creator
+
+# TAREAS DEL ESPECIALISTA SEO
+# ---------------------------
+
+seo_strategy_task:
+  description: >
+    Desarrollar una estrategia SEO integral para mejorar visibilidad orgánica:
+    1. Realizar keyword research exhaustivo para {industry}
+    2. Analizar gap analysis vs. competidores en SERPs
+    3. Crear arquitectura de contenido y site structure
+    4. Desarrollar link building strategy
+    5. Planificar optimizaciones técnicas prioritarias
+    6. Establecer KPIs y tracking plan
+    
+    Enfocarse en palabras clave relevantes para {target_audience}.
+  expected_output: >
+    Una estrategia SEO completa que incluya:
+    - Lista priorizada de 50+ keywords con volumen y dificultad
+    - Content gap analysis con oportunidades específicas
+    - Site architecture recomendada y URL structure
+    - Link building plan con tactics y targets
+    - Technical SEO audit checklist y prioridades
+    - SEO roadmap de 6 meses con timeline
+  agent: seo_specialist
+
+keyword_research_task:
+  description: >
+    Realizar investigación profunda de keywords para {industry}:
+    1. Identificar primary, secondary y long-tail keywords
+    2. Analizar search intent por grupo de keywords
+    3. Evaluar competencia por keyword y dificultad
+    4. Mapear keywords al customer journey
+    5. Identificar featured snippets opportunities
+    6. Crear keyword clusters por tema
+    
+    Priorizar keywords que conviertan para {target_audience}.
+  expected_output: >
+    Un documento completo de keyword research con:
+    - Lista master de keywords categorizada por intent
+    - Keyword mapping por customer journey stage
+    - Competitor keyword gap analysis
+    - Featured snippets opportunity list
+    - Keyword clusters para content planning
+    - Ranking tracking setup recomendado
+  agent: seo_specialist
+
+# TAREAS DEL ESPECIALISTA EN REDES SOCIALES
+# -----------------------------------------
+
+social_media_strategy_task:
+  description: >
+    Crear estrategia integral de redes sociales para {target_audience}:
+    1. Seleccionar plataformas más relevantes y justificar
+    2. Definir objetivos específicos por plataforma
+    3. Crear content strategy adaptada a cada red social
+    4. Desarrollar community management guidelines
+    5. Planificar social media advertising approach
+    6. Establecer métricas y KPIs por plataforma
+    
+    Considerar las preferencias identificadas del {target_audience}.
+  expected_output: >
+    Una estrategia de redes sociales que contenga:
+    - Platform mix recomendado con justificación estratégica
+    - Objetivos SMART específicos por plataforma
+    - Content strategy adaptada con tipos y frecuencia
+    - Community management playbook y guidelines
+    - Social ads strategy con targeting y presupuesto
+    - Social media metrics dashboard y reporting plan
+  agent: social_media_specialist
+
+social_content_calendar_task:
+  description: >
+    Desarrollar calendario de contenido para redes sociales del próximo mes:
+    1. Crear posts específicos para cada plataforma seleccionada
+    2. Incluir variety de formatos (image, video, carousel, stories)
+    3. Balancear contenido orgánico y promocional
+    4. Incorporar trending topics y hashtags relevantes
+    5. Planificar timing óptimo para cada post
+    6. Incluir call-to-actions y engagement tactics
+    
+    Adaptar a las características de {target_audience} y {industry}.
+  expected_output: >
+    Un calendario de contenido social que incluya:
+    - 30 días de contenido planificado por plataforma
+    - Post copy completo con hashtags y CTAs
+    - Visual content requirements y specifications
+    - Optimal posting schedule con horarios específicos
+    - Engagement strategy y community management notes
+    - Performance tracking plan con métricas por post
+  agent: social_media_specialist
+
+# TAREAS DEL ANALISTA DE DATOS
+# ----------------------------
+
+analytics_setup_task:
+  description: >
+    Establecer framework de analytics para medir success de {marketing_objectives}:
+    1. Definir KPIs principales y secundarios
+    2. Configurar tracking y measurement plan
+    3. Crear dashboard structure y reporting calendar
+    4. Establecer benchmarks y goals por métrica
+    5. Planificar A/B testing framework
+    6. Definir attribution model y customer journey tracking
+    
+    Debe permitir medir ROI y performance de todas las actividades planificadas.
+  expected_output: >
+    Un plan de analytics y medición que contenga:
+    - Marketing metrics hierarchy con KPIs por objetivo
+    - Tracking implementation guide con tools recomendados
+    - Dashboard mockups para diferentes audiencias
+    - Benchmarking data y goal setting por métrica
+    - A/B testing calendar y methodology
+    - Attribution model y conversion tracking setup
+  agent: data_analyst
+
+performance_analysis_task:
+  description: >
+    Crear framework para análisis continuo de performance:
+    1. Establecer reporting schedule y audiencias
+    2. Definir alertas y trigger points para optimization
+    3. Crear templates para performance reviews
+    4. Planificar competitive benchmarking continuo
+    5. Desarrollar ROI calculation methodology
+    6. Establecer data quality assurance process
+    
+    Debe facilitar decision-making data-driven continuo.
+  expected_output: >
+    Un sistema de performance analysis que incluya:
+    - Reporting calendar con frequency y responsibility
+    - Performance review templates por canal/campaña
+    - Alert system para underperformance y opportunities
+    - ROI calculation framework con attribution rules
+    - Competitive tracking setup y benchmarking process
+    - Data governance guidelines y quality controls
+  agent: data_analyst
+
+# TAREAS DEL GESTOR DE CAMPAÑAS
+# -----------------------------
+
+campaign_planning_task:
+  description: >
+    Desarrollar plan integral de implementación para estrategia de marketing:
+    1. Crear project timeline con milestones clave
+    2. Definir resource requirements y team structure
+    3. Establecer budget allocation y tracking
+    4. Planificar risk management y contingencias
+    5. Crear workflow de approval y quality control
+    6. Desarrollar launch checklist y go-live plan
+    
+    Debe ser realistic y executable para alcanzar {marketing_objectives}.
+  expected_output: >
+    Un plan de implementación detallado que contenga:
+    - Project timeline con tasks, dependencies y deadlines
+    - Resource planning con roles, responsibilities y workload
+    - Budget breakdown con allocation y tracking system
+    - Risk assessment con mitigation strategies
+    - Quality control process y approval workflows
+    - Launch readiness checklist y rollback plan
+  agent: campaign_manager
+
+campaign_coordination_task:
+  description: >
+    Coordinar la ejecución de campañas multi-canal:
+    1. Sincronizar timing entre diferentes canales
+    2. Asegurar consistency de messaging y branding
+    3. Coordinar resource allocation y team communication
+    4. Gestionar dependencies entre campaigns
+    5. Monitorear progress vs. timeline y presupuesto
+    6. Facilitar cross-team collaboration y troubleshooting
+    
+    Mantener focus en {marketing_objectives} y optimization continua.
+  expected_output: >
+    Un plan de coordinación de campaña que incluya:
+    - Campaign synchronization matrix por canal y timing
+    - Brand consistency checklist y approval process
+    - Team communication plan con meetings y updates
+    - Dependency mapping y critical path analysis
+    - Budget tracking system con alerts y controls
+    - Cross-channel optimization framework
+  agent: campaign_manager
+
+# TAREAS DEL COPYWRITER
+# --------------------
+
+copy_strategy_task:
+  description: >
+    Desarrollar estrategia de copy y messaging para diferentes touchpoints:
+    1. Crear voice & tone guidelines específicos
+    2. Desarrollar key messages y value propositions
+    3. Crear copy frameworks para diferentes canales
+    4. Establecer testing plan para copy effectiveness
+    5. Definir personalization strategy por segment
+    6. Crear copy templates y scalable processes
+    
+    El copy debe resonar con {target_audience} y drive {marketing_objectives}.
+  expected_output: >
+    Una estrategia de copy completa que contenga:
+    - Brand voice guide con ejemplos por situación
+    - Messaging hierarchy y key value props
+    - Copy frameworks por canal (email, ads, web, social)
+    - A/B testing plan para copy optimization
+    - Personalization matrix por audience segment
+    - Copy template library y production guidelines
+  agent: copywriter
+
+conversion_copy_task:
+  description: >
+    Crear copy de alta conversión para touchpoints clave:
+    1. Escribir headlines y subject lines persuasivos
+    2. Desarrollar copy para landing pages y CTAs
+    3. Crear email sequences para nurturing
+    4. Escribir ad copy para diferentes platforms
+    5. Desarrollar sales enablement copy
+    6. Crear copy para retargeting y re-engagement
+    
+    Focus en driving action y supporting {marketing_objectives}.
+  expected_output: >
+    Un library de copy de conversión que incluya:
+    - 20+ headlines testeados para diferentes contexts
+    - Landing page copy templates con CTA variations
+    - Email sequence copy para diferentes funnels
+    - Ad copy variants por platform y objective
+    - Sales enablement materials copy
+    - Retargeting messaging por audience segment
+  agent: copywriter
+
+# TAREAS DEL ESPECIALISTA EN EMAIL MARKETING
+# ------------------------------------------
+
+email_strategy_task:
+  description: >
+    Desarrollar estrategia integral de email marketing:
+    1. Definir email marketing objectives y KPIs
+    2. Crear segmentation strategy para {target_audience}
+    3. Desarrollar email journey mapping
+    4. Planificar automation sequences y triggers
+    5. Establecer email design y template guidelines
+    6. Crear testing y optimization framework
+    
+    Debe integrarse con otros canales y support {marketing_objectives}.
+  expected_output: >
+    Una estrategia de email marketing que contenga:
+    - Email marketing goals con métricas específicas
+    - Audience segmentation matrix con criteria
+    - Email customer journey map con touchpoints
+    - Automation workflow diagrams con triggers
+    - Email design system y template specifications
+    - Testing methodology y optimization calendar
+  agent: email_marketing_specialist
+
+email_automation_task:
+  description: >
+    Crear automated email sequences para nurturing y conversion:
+    1. Desarrollar welcome series para nuevos subscribers
+    2. Crear lead nurturing sequences por segment
+    3. Diseñar post-purchase y onboarding flows
+    4. Planificar re-engagement y win-back campaigns
+    5. Establecer behavioral trigger campaigns
+    6. Crear seasonal y promotional automation
+    
+    Personalizar para las características del {target_audience}.
+  expected_output: >
+    Un sistema de email automation que incluya:
+    - Welcome series completa con 5-7 emails
+    - Lead nurturing sequences por buyer persona
+    - Post-purchase flow con upsell opportunities
+    - Re-engagement campaign con progressive profiling
+    - Behavioral triggers con personalization rules
+    - Seasonal campaigns template library
+  agent: email_marketing_specialist

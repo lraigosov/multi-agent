@@ -1,0 +1,86 @@
+# Marketing Multi-Agent System Requirements
+# =========================================
+
+# Core CrewAI and AI Dependencies
+crewai>=0.203.0
+crewai-tools>=0.15.0
+openai>=1.0.0
+langchain>=0.1.0
+langchain-openai>=0.1.0
+langchain-community>=0.0.10
+
+# Data Handling and Processing
+pydantic>=2.5.0
+pandas>=2.0.0
+numpy>=1.24.0
+requests>=2.31.0
+PyYAML>=6.0.0
+python-dotenv>=1.0.0
+
+# Visualization and Reporting
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.17.0
+Pillow>=10.0.0
+
+# Web Scraping and APIs
+beautifulsoup4>=4.12.0
+selenium>=4.15.0
+aiohttp>=3.8.0
+
+# Database Support
+psycopg2-binary>=2.9.0
+redis>=5.0.0
+sqlalchemy>=2.0.0
+alembic>=1.12.0
+
+# File Processing
+openpyxl>=3.1.0
+xlsxwriter>=3.1.0
+python-docx>=0.8.11
+reportlab>=4.0.0
+markdown>=3.5.0
+
+# Email and Communication
+sendgrid>=6.10.0
+twilio>=8.10.0
+
+# Development and Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+isort>=5.12.0
+flake8>=6.0.0
+mypy>=1.5.0
+pre-commit>=3.4.0
+
+# Security
+cryptography>=41.0.0
+python-jose[cryptography]>=3.3.0
+
+# Utilities
+click>=8.1.0
+rich>=13.5.0
+tqdm>=4.66.0
+schedule>=1.2.0
+
+# Optional: Jupyter for development
+jupyter>=1.0.0
+ipykernel>=6.25.0
+jupyterlab>=4.0.0
+
+# Optional: Additional LLM providers
+anthropic>=0.3.0
+google-generativeai>=0.3.0
+cohere>=4.30.0
+
+# Optional: Social Media APIs
+tweepy>=4.14.0
+facebook-sdk>=3.1.0
+python-linkedin-v2>=2.0.0
+
+# Optional: Marketing and Analytics APIs
+google-analytics-data>=0.17.0
+google-ads>=22.1.0
+facebook-business>=18.0.0

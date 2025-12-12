@@ -1,0 +1,33 @@
+# Registro central de dominios multi-agente
+# Permite habilitar/deshabilitar dominios y especificar metadatos
+
+domains:
+  marketing:
+    enabled: true
+    package: marketing_multiagent
+    description: "Dominio de Marketing Digital"
+    crews_module: marketing_multiagent.crews
+    flows_module: marketing_multiagent.flows
+    agents_config: config/marketing_agents.yaml
+    tasks_config: config/marketing_tasks.yaml
+    tools_config: config/marketing_config.yaml
+
+  sst:
+    enabled: true
+    package: sst_multiagent
+    description: "Dominio de Seguridad y Salud en el Trabajo (SST)"
+    crews_module: sst_multiagent.crews
+    flows_module: sst_multiagent.flows
+    agents_config: config/sst_agents.yaml
+    tasks_config: config/sst_tasks.yaml
+    tools_config: config/sst_config.yaml
+
+  etl:
+    enabled: true
+    package: etl_multiagent
+    description: "Dominio ETL multi-agente con arquitectura hexagonal"
+    crews_module: etl_multiagent.crews
+    flows_module: etl_multiagent.flows
+    agents_config: config/etl_agents.yaml
+    tasks_config: config/etl_tasks.yaml
+    tools_config: config/etl_config.yaml

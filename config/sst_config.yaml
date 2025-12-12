@@ -1,0 +1,434 @@
+# Configuración específica para herramientas del dominio SST
+# Define configuraciones y parámetros para herramientas especializadas
+
+# ============================================================================
+# CONFIGURACIÓN DE HERRAMIENTAS DE EVALUACIÓN DE RIESGOS
+# ============================================================================
+
+risk_assessment_tools:
+  risk_matrix:
+    probability_levels:
+      very_low: { value: 1, description: "Muy remota, prácticamente imposible" }
+      low: { value: 2, description: "Remota, pero puede ocurrir" }
+      medium: { value: 3, description: "Posible, ha ocurrido antes" }
+      high: { value: 4, description: "Probable, ocurre regularmente" }
+      very_high: { value: 5, description: "Casi seguro, ocurre frecuentemente" }
+    
+    severity_levels:
+      insignificant: { value: 1, description: "Sin lesiones, daños menores" }
+      minor: { value: 2, description: "Lesiones menores, primeros auxilios" }
+      moderate: { value: 3, description: "Lesiones que requieren tratamiento médico" }
+      major: { value: 4, description: "Lesiones graves, hospitalización" }
+      catastrophic: { value: 5, description: "Muerte o incapacidad permanente" }
+    
+    risk_levels:
+      low: { range: "1-4", color: "green", action: "Riesgo aceptable, mantener controles" }
+      medium: { range: "5-9", color: "yellow", action: "Requiere atención, implementar controles adicionales" }
+      high: { range: "10-16", color: "orange", action: "Riesgo significativo, acción inmediata requerida" }
+      critical: { range: "17-25", color: "red", action: "Riesgo inaceptable, detener actividad hasta controlar" }
+
+  hazard_categories:
+    physical:
+      - falls_from_height
+      - slips_trips_falls
+      - struck_by_objects
+      - caught_in_between
+      - electrical_hazards
+      - fire_explosion
+      - temperature_extremes
+      - noise_vibration
+      - radiation
+    
+    chemical:
+      - toxic_substances
+      - corrosive_materials
+      - flammable_liquids
+      - compressed_gases
+      - carcinogens
+      - respiratory_irritants
+      - skin_sensitizers
+      - environmental_pollutants
+    
+    biological:
+      - infectious_agents
+      - allergens
+      - vector_borne_diseases
+      - contaminated_materials
+      - waste_materials
+    
+    ergonomic:
+      - repetitive_motions
+      - awkward_postures
+      - manual_lifting
+      - force_exertion
+      - contact_stress
+      - workplace_design
+    
+    psychosocial:
+      - work_overload
+      - time_pressure
+      - workplace_violence
+      - harassment
+      - job_insecurity
+      - lack_of_control
+
+# ============================================================================
+# CONFIGURACIÓN DE BÚSQUEDA REGULATORIA
+# ============================================================================
+
+regulatory_search:
+  databases:
+    international:
+      - name: "ILO Standards"
+        url: "https://www.ilo.org/global/standards/lang--en/index.htm"
+        description: "International Labour Organization standards and conventions"
+      - name: "ISO 45001"
+        url: "https://www.iso.org/iso-45001-occupational-health-and-safety.html"
+        description: "Occupational health and safety management systems"
+    
+    national_spain:
+      - name: "Ley 31/1995"
+        description: "Ley de Prevención de Riesgos Laborales"
+        url: "https://www.boe.es/buscar/act.php?id=BOE-A-1995-24292"
+      - name: "RD 39/1997"
+        description: "Reglamento de los Servicios de Prevención"
+        url: "https://www.boe.es/buscar/act.php?id=BOE-A-1997-1853"
+      - name: "RD 486/1997"
+        description: "Disposiciones mínimas de seguridad y salud en los lugares de trabajo"
+        url: "https://www.boe.es/buscar/act.php?id=BOE-A-1997-8826"
+      - name: "RD 773/1997"
+        description: "Disposiciones mínimas sobre utilización de equipos de protección individual"
+        url: "https://www.boe.es/buscar/act.php?id=BOE-A-1997-8837"
+    
+    us_osha:
+      - name: "OSHA General Duty Clause"
+        code: "Section 5(a)(1)"
+        description: "General duty to provide safe workplace"
+      - name: "OSHA Personal Protective Equipment"
+        code: "29 CFR 1926.95"
+        description: "PPE requirements for construction"
+      - name: "OSHA Hazard Communication"
+        code: "29 CFR 1910.1200"
+        description: "Chemical hazard communication standard"
+
+  search_parameters:
+    industries:
+      construction: ["RD 1627/1997", "construction safety", "fall protection", "scaffolding"]
+      manufacturing: ["machine guarding", "lockout tagout", "industrial hygiene", "ergonomics"]
+      healthcare: ["bloodborne pathogens", "workplace violence", "ergonomics", "chemical exposure"]
+      office: ["ergonomics", "indoor air quality", "emergency evacuation", "workplace stress"]
+    
+    topics:
+      fall_protection: ["altura", "fall protection", "scaffolding", "ladder safety"]
+      chemical_safety: ["chemical hazards", "SDS", "exposure limits", "PPE"]
+      ergonomics: ["musculoskeletal", "repetitive strain", "lifting", "workplace design"]
+      emergency_response: ["emergency planning", "evacuation", "fire safety", "first aid"]
+
+# ============================================================================
+# CONFIGURACIÓN DE ANÁLISIS DE INCIDENTES
+# ============================================================================
+
+incident_analysis:
+  incident_types:
+    injury:
+      - fatality
+      - lost_time_injury
+      - medical_treatment_injury
+      - first_aid_injury
+      - near_miss
+    
+    illness:
+      - occupational_disease
+      - acute_exposure
+      - chronic_exposure
+      - work_related_illness
+    
+    property_damage:
+      - equipment_damage
+      - facility_damage
+      - environmental_release
+      - business_interruption
+  
+  body_parts:
+    - head_neck
+    - eyes
+    - trunk_back
+    - upper_extremities
+    - lower_extremities
+    - multiple_body_parts
+    - internal_organs
+    - whole_body_systemic
+  
+  injury_sources:
+    - machinery_equipment
+    - tools_implements
+    - materials_substances
+    - work_environment
+    - vehicles
+    - persons_plants_animals
+    - structures_surfaces
+  
+  root_cause_categories:
+    immediate_causes:
+      unsafe_acts:
+        - operating_without_authority
+        - failure_to_warn
+        - failure_to_secure
+        - operating_at_unsafe_speed
+        - making_safety_devices_inoperative
+        - using_defective_equipment
+        - failure_to_use_ppe
+        - improper_loading_lifting
+        - improper_position_for_task
+        - servicing_equipment_in_operation
+      
+      unsafe_conditions:
+        - inadequate_guards_barriers
+        - defective_tools_equipment
+        - inadequate_warning_systems
+        - fire_explosion_hazards
+        - poor_housekeeping
+        - hazardous_atmospheric_conditions
+        - inadequate_illumination
+        - excessive_noise
+        - inadequate_ventilation
+        - congestion_restricted_action
+    
+    basic_causes:
+      personal_factors:
+        - inadequate_capability
+        - lack_of_knowledge_skill
+        - improper_motivation
+        - physical_mental_problems
+      
+      job_factors:
+        - inadequate_leadership_supervision
+        - inadequate_engineering
+        - inadequate_purchasing
+        - inadequate_maintenance
+        - inadequate_tools_equipment
+        - inadequate_work_standards
+        - wear_tear
+        - abuse_misuse
+
+# ============================================================================
+# CONFIGURACIÓN DE HERRAMIENTAS ERGONÓMICAS
+# ============================================================================
+
+ergonomic_assessment:
+  assessment_tools:
+    rula:
+      name: "Rapid Upper Limb Assessment"
+      application: "Upper limb repetitive tasks"
+      score_ranges:
+        acceptable: "1-2"
+        investigate_change_soon: "3-4"
+        investigate_change_now: "5-6"
+        change_immediately: "7+"
+    
+    reba:
+      name: "Rapid Entire Body Assessment"
+      application: "Whole body postural analysis"
+      score_ranges:
+        negligible_risk: "1"
+        low_risk: "2-3"
+        medium_risk: "4-7"
+        high_risk: "8-10"
+        very_high_risk: "11-15"
+    
+    niosh_lifting:
+      name: "NIOSH Lifting Equation"
+      application: "Manual lifting tasks"
+      lifting_index_interpretation:
+        acceptable: "≤1.0"
+        some_risk: "1.0-3.0"
+        high_risk: ">3.0"
+    
+    jsi:
+      name: "Job Strain Index"
+      application: "Hand-intensive tasks"
+      score_interpretation:
+        safe: "≤3"
+        uncertain: "3-7"
+        hazardous: ">7"
+  
+  risk_factors:
+    postural:
+      - neck_flexion_extension
+      - trunk_flexion_twist
+      - shoulder_elevation
+      - arm_reach_overhead
+      - wrist_deviation
+      - knee_kneeling
+    
+    force:
+      - grip_strength_required
+      - lifting_weight
+      - pushing_pulling_force
+      - pinch_grip_force
+    
+    repetition:
+      - cycle_time
+      - frequency_of_motion
+      - work_rest_patterns
+      - duration_of_exposure
+    
+    environmental:
+      - vibration_exposure
+      - temperature_extremes
+      - contact_stress
+      - inadequate_lighting
+
+# ============================================================================
+# CONFIGURACIÓN DE HIGIENE INDUSTRIAL
+# ============================================================================
+
+industrial_hygiene:
+  exposure_limits:
+    spain_vlep:  # Valores Límite de Exposición Profesional
+      source: "INSST - Instituto Nacional de Seguridad y Salud en el Trabajo"
+      update_frequency: "Annual"
+      
+    acgih_tlv:  # American Conference of Governmental Industrial Hygienists
+      source: "ACGIH Threshold Limit Values"
+      types:
+        - twa  # Time Weighted Average
+        - stel # Short Term Exposure Limit
+        - ceiling # Ceiling limit
+        - skin # Skin notation
+    
+    osha_pel:  # Occupational Safety and Health Administration
+      source: "OSHA Permissible Exposure Limits"
+      regulation: "29 CFR 1910.1000"
+  
+  sampling_methods:
+    air_sampling:
+      personal: "Breathing zone sampling using personal pumps"
+      area: "Fixed location sampling for general assessment"
+      real_time: "Direct reading instruments for immediate results"
+    
+    surface_sampling:
+      wipe: "Surface contamination assessment"
+      bulk: "Material composition analysis"
+    
+    biological:
+      urine: "Metabolite analysis"
+      blood: "Systemic exposure assessment"
+      exhaled_breath: "Volatile compound analysis"
+  
+  analytical_methods:
+    niosh_methods: "National Institute for Occupational Safety and Health"
+    osha_methods: "Occupational Safety and Health Administration"
+    iso_methods: "International Organization for Standardization"
+    en_methods: "European Standards"
+
+# ============================================================================
+# CONFIGURACIÓN DE RESPUESTA A EMERGENCIAS
+# ============================================================================
+
+emergency_response:
+  emergency_types:
+    fire:
+      classification:
+        - class_a  # Ordinary combustibles
+        - class_b  # Flammable liquids
+        - class_c  # Electrical
+        - class_d  # Metals
+        - class_k  # Cooking oils/fats
+      response_time: "3-5 minutes"
+    
+    medical:
+      severity_levels:
+        - minor_injury     # First aid level
+        - serious_injury   # Medical treatment required
+        - critical_injury  # Life threatening
+        - fatality        # Death occurred
+      response_time: "1-3 minutes"
+    
+    chemical_spill:
+      categories:
+        - minor_spill     # <5 gallons, non-hazardous
+        - major_spill     # >5 gallons or hazardous
+        - environmental   # Potential environmental impact
+      response_time: "5-10 minutes"
+    
+    natural_disaster:
+      types:
+        - earthquake
+        - flood
+        - severe_weather
+        - power_outage
+      response_time: "Immediate"
+  
+  communication:
+    internal_contacts:
+      - security
+      - management
+      - safety_officer
+      - maintenance
+      - medical_staff
+    
+    external_contacts:
+      - emergency_services  # 112 (Spain), 911 (US)
+      - fire_department
+      - police
+      - ambulance_ems
+      - poison_control
+      - environmental_authorities
+  
+  evacuation_procedures:
+    assembly_points:
+      primary: "Main parking lot"
+      secondary: "Alternate location 500m from building"
+    
+    accountability:
+      method: "Roll call by department heads"
+      timing: "Within 10 minutes of evacuation"
+    
+    special_procedures:
+      disabled_persons: "Buddy system and assisted evacuation"
+      visitors: "Escort by assigned employee"
+      contractors: "Report to contractor coordinator"
+
+# ============================================================================
+# CONFIGURACIÓN DE INDICADORES Y MÉTRICAS
+# ============================================================================
+
+safety_metrics:
+  lagging_indicators:
+    injury_rates:
+      ltir: "Lost Time Injury Rate per 200,000 hours"
+      trir: "Total Recordable Injury Rate per 200,000 hours"
+      severity_rate: "Days lost per 200,000 hours"
+      fatality_rate: "Fatalities per 200,000 hours"
+    
+    cost_metrics:
+      workers_comp_cost: "Workers compensation costs"
+      medical_costs: "Direct medical treatment costs"
+      indirect_costs: "Lost productivity and replacement costs"
+  
+  leading_indicators:
+    proactive_metrics:
+      safety_observations: "Behavioral safety observations conducted"
+      near_miss_reports: "Near miss incidents reported"
+      safety_suggestions: "Employee safety suggestions submitted"
+      training_hours: "Safety training hours completed"
+      audit_scores: "Safety audit scores achieved"
+    
+    compliance_metrics:
+      inspection_completion: "Scheduled inspections completed on time"
+      corrective_actions: "Corrective actions closed within target dates"
+      permit_compliance: "Work permits properly executed"
+      ppe_compliance: "PPE compliance rate during observations"
+  
+  benchmarking:
+    industry_standards:
+      construction: "BLS injury rates by NAICS code"
+      manufacturing: "NSC industry safety statistics"
+      healthcare: "OSHA injury/illness data"
+    
+    comparison_metrics:
+      - year_over_year
+      - peer_companies
+      - industry_average
+      - best_in_class
