@@ -15,7 +15,7 @@ Necesitas **al menos una** de estas opciones:
 4. Copia la key que comienza con `sk-`
 5. Añade a `.env`: `OPENAI_API_KEY=sk-tu-key-aqui`
 
-**💰 Costo**: ~$0.01 por 1000 tokens (muy económico para pruebas)
+**💰 Costo**: Consulta precios oficiales: https://openai.com/api/pricing
 
 #### Opción B: Google Gemini (Gratis)
 1. Ve a [AI Studio](https://aistudio.google.com/app/apikey)
@@ -24,7 +24,7 @@ Necesitas **al menos una** de estas opciones:
 4. Copia la key generada
 5. Añade a `.env`: `GOOGLE_API_KEY=tu-key-aqui`
 
-**💰 Costo**: ¡GRATIS! hasta 15 requests por minuto
+**💰 Costo**: Consulta límites y precios: https://ai.google.dev/pricing (AI Studio)
 
 #### Opción C: Anthropic Claude
 1. Ve a [Anthropic Console](https://console.anthropic.com/)
@@ -42,7 +42,7 @@ Necesitas **al menos una** de estas opciones:
 4. Copia tu API key del dashboard
 5. Añade a `.env`: `SERPER_API_KEY=tu-key-aqui`
 
-**💰 Costo**: 2500 búsquedas gratis por mes
+**💰 Costo**: Revisa planes vigentes en el dashboard de Serper
 
 ---
 
@@ -174,14 +174,11 @@ curl -H "Authorization: Bearer $OPENAI_API_KEY" \
 
 ---
 
-## 📊 Comparación de Costos (por 1M tokens)
+## 📊 Comparación de Costos
 
-| Proveedor | Modelo | Input | Output | Calidad | Velocidad |
-|-----------|---------|-------|---------|---------|-----------|
-| Google | Gemini-2.5-flash | GRATIS | GRATIS | ⭐⭐⭐⭐⭐ | ⚡⚡⚡ |
-| OpenAI | GPT-3.5-turbo | $0.50 | $1.50 | ⭐⭐⭐ | ⚡⚡⚡ |
-| OpenAI | GPT-4o | $5.00 | $15.00 | ⭐⭐⭐⭐⭐ | ⚡⚡ |
-| Anthropic | Claude-3-haiku | $0.25 | $1.25 | ⭐⭐⭐⭐ | ⚡⚡⚡ |
-| Anthropic | Claude-3.5-sonnet | $3.00 | $15.00 | ⭐⭐⭐⭐⭐ | ⚡⚡ |
+Consulta siempre las páginas oficiales porque los precios cambian:
+- Gemini: https://ai.google.dev/pricing
+- OpenAI: https://openai.com/api/pricing
+- Anthropic: https://www.anthropic.com/pricing
 
-> **💡 Consejo**: Empieza con Gemini (gratis) y migra a OpenAI cuando necesites mejor calidad.
+Consejo: empieza con Gemini (tier gratuito de AI Studio) y migra a otros modelos si necesitas mejor calidad o features específicas.

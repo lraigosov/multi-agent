@@ -196,13 +196,13 @@ DEBUG=false
 
 ### 2. Opciones de LLM
 
-El sistema soporta múltiples proveedores. **Necesitas al menos uno configurado**:
+El sistema soporta múltiples proveedores. **Necesitas al menos uno configurado**. Consulta precios oficiales (cambian con frecuencia):
 
-| Proveedor | Modelo | Costo | Nivel Gratis | Estado |
+| Proveedor | Modelo | Costos | Nivel Gratis | Estado |
 |-----------|---------|--------|-------------|--------|
-| Google Gemini | Gemini 2.5 Flash | GRATIS | 15 req/min | ✅ Usado en demos |
-| OpenAI | GPT-4o, GPT-3.5-turbo | $0.001-0.015/1K | $5 crédito | ✅ Compatible |
-| Anthropic | Claude 3.5 Sonnet | $0.003-0.015/1K | $5 crédito | ✅ Compatible |
+| Google Gemini | Gemini 2.5 Flash | Ver precios: https://ai.google.dev/pricing | 15 req/min (AI Studio) | ✅ Usado en demos |
+| OpenAI | GPT-4o, GPT-3.5-turbo | Ver precios: https://openai.com/api/pricing | Depende de plan | ✅ Compatible |
+| Anthropic | Claude 3.5 Sonnet | Ver precios: https://www.anthropic.com/pricing | Depende de plan | ✅ Compatible |
 
 **Recomendación**: Comienza con Google Gemini (gratuito) para desarrollo.
 
