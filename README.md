@@ -29,11 +29,10 @@ Un sistema multi-dominio de agentes autónomos desarrollado con **CrewAI** que a
 ![Ejecución Exitosa](docs/images/image.png)
 *Ejemplo de ejecución: Análisis de mercado español con 3 agentes coordinados (Market Researcher → Strategist → Content Creator)*
 
-**Estado:** ✅ **COMPLETAMENTE FUNCIONAL**  
-**Modelo:** Google Gemini 2.5 Flash (gratuito)  
-**Última Prueba:** 11 enero 2025 - Análisis completo de marketing generado exitosamente
-
-El sistema multi-agente está **operativo y probado** con casos reales de análisis de mercado español.
+**Estado:** Dominios implementados (marketing, SST, ETL) con demos incluidas.  
+**Modelo usado en demos:** Google Gemini 2.5 Flash (gratuito).  
+**Verificado en esta sesión:** `examples/demo_etl.py` ejecutó OK (pipeline determinista).  
+Marketing y SST cuentan con demos y crews registrados; no se volvieron a ejecutar en esta sesión.
 
 ## 🎯 Características Principales
 
@@ -201,10 +200,9 @@ El sistema soporta múltiples proveedores. **Necesitas al menos uno configurado*
 
 | Proveedor | Modelo | Costo | Nivel Gratis | Estado |
 |-----------|---------|--------|-------------|--------|
-| **Google Gemini** ⭐ | Gemini 2.5 Flash | GRATIS | 15 req/min | ✅ Probado |
-| **OpenAI** | GPT-4o, GPT-3.5-turbo | $0.001-0.015/1K | $5 crédito | ✅ Compatible |
-| **Anthropic** | Claude 3.5 Sonnet | $0.003-0.015/1K | $5 crédito | ✅ Compatible |
-| **Hugging Face** | Llama, Mixtral | Gratis-pago | 1000 req/mes | ✅ Compatible |
+| Google Gemini | Gemini 2.5 Flash | GRATIS | 15 req/min | ✅ Usado en demos |
+| OpenAI | GPT-4o, GPT-3.5-turbo | $0.001-0.015/1K | $5 crédito | ✅ Compatible |
+| Anthropic | Claude 3.5 Sonnet | $0.003-0.015/1K | $5 crédito | ✅ Compatible |
 
 **Recomendación**: Comienza con Google Gemini (gratuito) para desarrollo.
 
@@ -372,10 +370,9 @@ multi-agent/
 │   └── README.md
 ├── docs/                              # Documentación
 │   ├── api-setup-guide.md             # Configuración de APIs
-│   ├── sst_multiagent.md              # Documentación SST detallada
-│   ├── etl_README.md                  # Documentación ETL
-│   ├── etl_architecture.md
-│   ├── etl_agents_design.md
+│   ├── sst_multiagent.md              # Documentación SST
+│   ├── etl_README.md                  # Documentación ETL (hexagonal, sin LLMs)
+│   ├── etl_architecture.md            # Diagrama y principios ETL
 │   └── images/
 ├── tests/                             # Tests
 │   ├── test_registry.py

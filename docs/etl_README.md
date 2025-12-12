@@ -1,27 +1,20 @@
-# ETL Multi-Agent System - Hexagonal Architecture
+# ETL Hexagonal (Ports & Adapters, sin LLMs)
 
-Sistema ETL multi-agente construido con **arquitectura hexagonal** (Ports & Adapters) y orquestado con **CrewAI**. Permite procesar datos desde múltiples fuentes (archivos, APIs, bases de datos) y cargarlos en diversos destinos (archivos, data warehouses) con transformaciones, validaciones y autocorrección.
+Pipeline ETL determinista construido con **arquitectura hexagonal** (Ports & Adapters). Usa pandas para ingesta/transformación/validación/carga y puede orquestarse con el `ETLPipelineFlow` (CrewAI Flow) incluido. No requiere LLMs para ejecutarse.
 
 ## 🎯 Características
 
 - **Arquitectura Hexagonal**: Dominio desacoplado de frameworks e infraestructura
 - **Puertos y Adaptadores**: Interfaces claras para sources, transformations, validations, destinations
 - **Casos de Uso Funcionales**: Ingestión, transformación, validación y carga de datos
-- **Validación Integrada**: Checks de nulls, duplicados y tipos de datos
+- **Validación Integrada**: Checks de nulls y duplicados
 - **Extensible**: Fácil adición de nuevos adaptadores sin modificar dominio
-- **Preparado para CrewAI** (v0.2+): Arquitectura lista para integración con agentes multi-LLM
+- **Flow incluido**: `ETLPipelineFlow` orquesta los casos de uso con los adaptadores actuales
 
-## 📋 Casos de Uso (Actuales)
+## 📋 Casos de Uso actuales
 
-1. **Transformación Local**: CSV → CSV con mapeo de columnas y type casting
+1. **Transformación Local**: CSV → CSV/Parquet/Excel con mapeo de columnas y type casting
 2. **Validación de Calidad**: Detección de nulos y duplicados
-
-## 🔮 Casos de Uso (Futuros - v0.2+)
-
-1. **Migración de Datos**: CSV → Parquet con limpieza y normalización
-2. **Data Warehousing**: Archivos locales → BigQuery con validación de calidad
-3. **Integración de APIs**: REST API → Base de datos relacional
-4. **Data Lakes**: Múltiples fuentes → S3/GCS con particionamiento
 
 ## 🏗️ Arquitectura
 
@@ -38,9 +31,9 @@ Domain (Entities + Use Cases + Ports)
 Adapters (Files, DBs, Cloud, Driven)
 ```
 
-**Nota**: La implementación actual utiliza casos de uso directamente. CrewAI Crew y Flow están definidos pero son opcionales para futuras extensiones.
+**Nota**: La demo usa los casos de uso directamente. El Flow `ETLPipelineFlow` está disponible si quieres orquestación declarativa.
 
-Ver [Diagrama Detallado](../docs/etl_architecture.md)
+Ver [etl_architecture.md](etl_architecture.md) para el diagrama.
 
 ## 🚀 Instalación
 
@@ -59,28 +52,6 @@ pip install -r requirements.txt
 poetry install
 ```
 
-## ⚙️ Configuración
-
-Copia `.env.example` y configura:
-
-```env
-# LLM Provider (openai, gemini, anthropic)
-ETL_LLM_PROVIDER=gemini
-ETL_LLM_MODEL=gemini-2.0-flash
-ETL_LLM_TEMPERATURE=0.1
-
-# Google Gemini (gratuito)
-GOOGLE_API_KEY=your_key_here
-
-# OpenAI (alternativo)
-OPENAI_API_KEY=sk-your_key_here
-
-# Configuración ETL
-ETL_ENABLE_QUALITY_CHECKS=true
-ETL_FAIL_ON_VALIDATION_ERRORS=false
-ETL_LOG_LEVEL=INFO
-```
-
 ## 🎮 Uso
 
 ### Demo Funcional
@@ -97,7 +68,6 @@ python examples/demo_etl.py
 - Carga a archivo CSV destino en `outputs/`
 
 **Nota**: La demo ejecuta el pipeline ETL completo sin dependencias de LLMs ni CrewAI Crew/Flow.
-```
 
 ### Uso Programático
 
@@ -134,23 +104,7 @@ print(f"Output: {state.load_result['path']}")
 
 ## 📚 Documentación
 
-- [Arquitectura Hexagonal](../docs/etl_architecture.md): Diagrama y principios
-- [Diseño de Agentes](../docs/etl_agents_design.md): Roles, goals, herramientas, LLMs
-- [Riesgos y Mitigaciones](../docs/etl_risks_mitigations.md): Limitaciones y planes futuros
-- [Checklist Producción](../docs/etl_production_checklist.md): Pasos para hardening
-
-## 🧪 Testing
-
-```bash
-# Tests unitarios
-pytest tests/test_etl_domain.py
-
-# Tests de integración
-pytest tests/test_etl_adapters.py
-
-# Demo completo
-python examples/demo_etl.py
-```
+- [etl_architecture.md](etl_architecture.md): Diagrama y principios aplicados
 
 ## 📦 Estructura del Proyecto
 
