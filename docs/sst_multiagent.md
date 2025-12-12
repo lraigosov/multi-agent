@@ -95,17 +95,62 @@ graph TB
 ### Flujo de datos: Evaluación de Riesgos (Crew)
 
 ```mermaid
-flowchart LR
-  IN[Inputs: industry, site, processes, regulatory_scope] --> R[Risk Analyst]
-  R --> RM[Risk Matrix Tool]
-  RM --> RR[risk_register]
-  IN --> CO[Compliance Officer]
-  CO --> CN[compliance_notes]
-  RR --> PP[Prevention Planner]
+flowchart TB
+  %% =========================
+  %% OBJETIVO: claridad por etapas (Entrada -> Evaluación -> Plan -> Consolidación -> Salida)
+  %% =========================
+
+  classDef input fill:#E8F0FE,stroke:#1A73E8,stroke-width:1px,color:#0B1F3B;
+  classDef actor fill:#E6F4EA,stroke:#137333,stroke-width:1px,color:#0B1F3B;
+  classDef tool  fill:#FEF7E0,stroke:#F9AB00,stroke-width:1px,color:#0B1F3B;
+  classDef artifact fill:#F3E8FF,stroke:#9333EA,stroke-width:1px,color:#0B1F3B;
+  classDef output fill:#E0F2FE,stroke:#0284C7,stroke-width:1px,color:#0B1F3B;
+
+  %% 1) ENTRADA
+  subgraph S1["1) Entrada"]
+    IN["Inputs<br/>industry · site · processes · regulatory_scope"]:::input
+  end
+
+  %% 2) EVALUACIÓN DE RIESGO
+  subgraph S2["2) Evaluación de riesgo"]
+    R["Risk Analyst"]:::actor
+    RM["Risk Matrix Tool"]:::tool
+    RR["risk_register"]:::artifact
+    SUM["risk_matrix_summary"]:::artifact
+  end
+
+  %% 3) CUMPLIMIENTO
+  subgraph S3["3) Cumplimiento"]
+    CO["Compliance Officer"]:::actor
+    CN["compliance_notes"]:::artifact
+  end
+
+  %% 4) PLAN DE PREVENCIÓN
+  subgraph S4["4) Plan de prevención"]
+    PP["Prevention Planner"]:::actor
+    PPS["prevention_plan_outline"]:::artifact
+  end
+
+  %% 5) SALIDA FINAL
+  subgraph S5["5) Entregables"]
+    OUT["outputs/sst_*.md"]:::output
+  end
+
+  %% FLUJO PRINCIPAL (izq->der / arriba->abajo)
+  IN --> R --> RM --> RR
+  RR --> SUM
+
+  IN --> CO --> CN
+
+  RR --> PP
   CN --> PP
-  PP --> PPS[prevention_plan_outline]
-  RR --> SUM[risk_matrix_summary]
-  {RR, CN, PPS, SUM} --> OUT[outputs/sst_*.md]
+  PP --> PPS
+
+  %% CONSOLIDACIÓN FINAL (todo alimenta el mismo entregable)
+  RR --> OUT
+  SUM --> OUT
+  CN --> OUT
+  PPS --> OUT
 ```
 
 ### Decisiones y umbrales de criticidad (Risk Assessment)
